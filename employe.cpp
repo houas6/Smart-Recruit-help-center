@@ -18,7 +18,7 @@ Employes::Employes(int cin,QString nom,QString prenom,int age,int tel,QString ad
     this->adresse=adresse;
     this->departement=departement;
 }
-
+//Getters and setters
 int Employes::get_cin(){return cin;}
 QString Employes::get_nom(){return nom;}
 QString Employes::get_prenom(){return prenom;}
@@ -41,6 +41,10 @@ bool Employes::ajouter()
     query.bindValue(":departement",departement);
     return    query.exec();
 }
+
+
+
+
 bool Employes::supprimer(int cin)
 {
 QSqlQuery query;
@@ -48,6 +52,24 @@ query.prepare("Delete from system.employes where cin=:cin");
 query.bindValue(":cin",cin);
 return    query.exec();
 }
+
+
+QSqlQueryModel * Employes::afficher()
+{QSqlQueryModel * model= new QSqlQueryModel();
+    model->setQuery("select * from system.EMPLOYES");
+    model->setHeaderData(0, Qt::Horizontal, QObject::tr("cin"));
+    model->setHeaderData(1, Qt::Horizontal, QObject::tr("nom"));
+    model->setHeaderData(2, Qt::Horizontal, QObject::tr("prenom"));
+    model->setHeaderData(3, Qt::Horizontal, QObject::tr("age"));
+    model->setHeaderData(4, Qt::Horizontal, QObject::tr("tel"));
+    model->setHeaderData(5, Qt::Horizontal, QObject::tr("adresse"));
+    model->setHeaderData(6, Qt::Horizontal, QObject::tr("departement"));
+    return model;
+    }
+
+
+
+
 bool Employes::modifier(int cin,QString nom,QString prenom,int age,int tel,QString adresse,QString departement)
 {
 QSqlQuery query;
