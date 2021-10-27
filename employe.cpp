@@ -55,7 +55,8 @@ return    query.exec();
 
 
 QSqlQueryModel * Employes::afficher()
-{QSqlQueryModel * model= new QSqlQueryModel();
+{
+    QSqlQueryModel * model= new QSqlQueryModel();
     model->setQuery("select * from system.EMPLOYES");
     model->setHeaderData(0, Qt::Horizontal, QObject::tr("cin"));
     model->setHeaderData(1, Qt::Horizontal, QObject::tr("nom"));

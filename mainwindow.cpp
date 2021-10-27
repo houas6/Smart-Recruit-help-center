@@ -2,11 +2,14 @@
 #include "ui_mainwindow.h"
 #include "employe.h"
 #include <QMessageBox>
+#include <QTableView>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    ui->tabemploye->setModel(Etmp.afficher());
+
 }
 
 MainWindow::~MainWindow()
@@ -16,7 +19,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_ajouter_clicked()
 {
-    //recuperation des info dans les 3 champs
+    //recuperation des info dans les 7 champs
     int cin=ui->lineEdit_cin->text().toInt();
     int age=ui->lineEdit_age->text().toInt();
     int tel=ui->lineEdit_tel->text().toInt();
@@ -28,6 +31,8 @@ void MainWindow::on_pushButton_ajouter_clicked()
     bool test=E.ajouter();//inserer employé e dans la table
     if (test)
     {
+        //Refresh(actualiser l affichage)
+ui->tabemploye->setModel(Etmp.afficher());
         QMessageBox::information(nullptr,QObject::tr("ok"),
                                  QObject::tr("ajout effectué \n"
                                              "Click Cancel to exist ."),QMessageBox::Cancel);
@@ -40,5 +45,26 @@ void MainWindow::on_pushButton_ajouter_clicked()
 
 
 
+
+}
+
+
+void MainWindow::on_pushButton_supprimer_clicked()
+{
+    //recuperation du cin
+    int cin=ui->lineEdit_cin->text().toInt();
+    bool test=Etmp.supprimer(cin);//inserer employé e dans la table
+    if (test)
+    {
+
+        QMessageBox::information(nullptr,QObject::tr("ok"),
+                                 QObject::tr("ajout effectué \n"
+                                             "Click Cancel to exist ."),QMessageBox::Cancel);
+
+    }
+    else
+          QMessageBox::critical(nullptr, QObject::tr("database is not open"),
+                      QObject::tr("connection failed.\n"
+                                  "Click Cancel to exit."), QMessageBox::Cancel);
 
 }
