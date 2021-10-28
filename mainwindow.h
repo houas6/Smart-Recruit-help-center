@@ -1,5 +1,6 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
+#include "collaboration.h"
 
 #include <QMainWindow>
 
@@ -14,8 +15,11 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+private slots:
+    void on_on_pushButton_ajouter_clicked_clicked();
 
 private:
     Ui::MainWindow *ui;
+    Collaboration ptmp;
 };
 #endif // MAINWINDOW_H
