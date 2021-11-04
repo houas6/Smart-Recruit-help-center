@@ -2,13 +2,14 @@
 #include "ui_mainwindow.h"
 #include "employe.h"
 #include <QMessageBox>
-#include <QTableView>
+#include <QStandardItemModel>
+#include <QListView>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    ui->tabemploye->setModel(Etmp.afficher());
+
 
 }
 
@@ -21,18 +22,18 @@ void MainWindow::on_pushButton_ajouter_clicked()
 {
     //recuperation des info dans les 7 champs
     int cin=ui->lineEdit_cin->text().toInt();
-    int age=ui->lineEdit_age->text().toInt();
-    int tel=ui->lineEdit_tel->text().toInt();
     QString nom=ui->lineEdit_nom->text();
     QString prenom=ui->lineEdit_prenom->text();
+    int age=ui->lineEdit_age->text().toInt();
+    int tel=ui->lineEdit_tel->text().toInt();
     QString adresse=ui->lineEdit_adresse->text();
     QString departement=ui->lineEdit_departement->text();
     Employes E(cin,nom,prenom,age, tel, adresse, departement);
     bool test=E.ajouter();//inserer employé e dans la table
     if (test)
     {
-        //Refresh(actualiser l affichage)
-ui->tabemploye->setModel(Etmp.afficher());
+
+
         QMessageBox::information(nullptr,QObject::tr("ok"),
                                  QObject::tr("ajout effectué \n"
                                              "Click Cancel to exist ."),QMessageBox::Cancel);
@@ -53,18 +54,47 @@ void MainWindow::on_pushButton_supprimer_clicked()
 {
     //recuperation du cin
     int cin=ui->lineEdit_cin->text().toInt();
-    bool test=Etmp.supprimer(cin);//inserer employé e dans la table
+    bool test=Etmp.supprimer(cin);//supprimer de la table
     if (test)
     {
 
         QMessageBox::information(nullptr,QObject::tr("ok"),
-                                 QObject::tr("ajout effectué \n"
+                                 QObject::tr("suppression effectué \n"
                                              "Click Cancel to exist ."),QMessageBox::Cancel);
 
     }
     else
-          QMessageBox::critical(nullptr, QObject::tr("database is not open"),
-                      QObject::tr("connection failed.\n"
+          QMessageBox::critical(nullptr, QObject::tr("no"),
+                      QObject::tr("Suppression failed.\n"
                                   "Click Cancel to exit."), QMessageBox::Cancel);
 
 }
+
+void MainWindow::on_pushButton_modifier_clicked()
+{
+    int cin=ui->lineEdit_cin->text().toInt();
+    QString nom=ui->lineEdit_nom->text();
+    QString prenom=ui->lineEdit_prenom->text();
+    int age=ui->lineEdit_age->text().toInt();
+    int tel=ui->lineEdit_tel->text().toInt();
+    QString adresse=ui->lineEdit_adresse->text();
+    QString departement=ui->lineEdit_departement->text();
+    Employes E(cin,nom,prenom,age, tel, adresse, departement);
+    bool test=E.modifier(cin,nom,prenom,age,tel,adresse,departement);//modifier employe
+    if (test)
+    {
+
+
+        QMessageBox::information(nullptr,QObject::tr("ok"),
+                                 QObject::tr("Modification effectué \n"
+                                             "Click Cancel to exist ."),QMessageBox::Cancel);
+
+    }
+    else
+          QMessageBox::critical(nullptr, QObject::tr("nonnnn"),
+                      QObject::tr("Modification failed.\n"
+                                  "Click Cancel to exit."), QMessageBox::Cancel);
+
+}
+
+

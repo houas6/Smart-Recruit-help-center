@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -245,6 +245,15 @@
          <height>20</height>
         </rect>
        </property>
+       <property name="text">
+        <string notr="true"/>
+       </property>
+       <property name="maxLength">
+        <number>8</number>
+       </property>
+       <property name="type" stdset="0">
+        <number>8</number>
+       </property>
       </widget>
       <widget class="QLineEdit" name="lineEdit_age">
        <property name="geometry">
@@ -254,6 +263,9 @@
          <width>113</width>
          <height>20</height>
         </rect>
+       </property>
+       <property name="maxLength">
+        <number>2</number>
        </property>
       </widget>
       <widget class="QLineEdit" name="lineEdit_tel">
@@ -266,7 +278,16 @@
         </rect>
        </property>
        <property name="inputMask">
-        <string>+216</string>
+        <string/>
+       </property>
+       <property name="text">
+        <string notr="true"/>
+       </property>
+       <property name="maxLength">
+        <number>8</number>
+       </property>
+       <property name="type" stdset="0">
+        <number>8</number>
        </property>
       </widget>
       <widget class="QLineEdit" name="lineEdit_adresse">

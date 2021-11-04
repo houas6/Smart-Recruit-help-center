@@ -7,7 +7,7 @@
 class Employes
 {
     //attribu
-    int cin;
+        int cin;
         QString nom;
         QString prenom;
         int age;
@@ -15,7 +15,7 @@ class Employes
         QString adresse;
         QString departement;
 public:
-        Employes();
+            Employes();
             Employes(int,QString,QString,int,int,QString,QString);
             int get_cin();
             QString get_nom();

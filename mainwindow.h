@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 #include "employe.h"
 #include <QMainWindow>
-
+#include <QTableWidget>
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -19,6 +19,10 @@ private slots:
     void on_pushButton_ajouter_clicked();
 
     void on_pushButton_supprimer_clicked();
+
+    void on_pushButton_modifier_clicked();
+
+
 
 private:
     Ui::MainWindow *ui;
