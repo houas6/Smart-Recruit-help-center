@@ -3,14 +3,15 @@
 #include "employe.h"
 #include <QMessageBox>
 #include <QStandardItemModel>
-#include <QListView>
+#include <QtSql/QSqlQueryModel>
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 
-
+ui->tableView_2->setModel(Etmp.afficher());
 }
 
 MainWindow::~MainWindow()
@@ -32,7 +33,7 @@ void MainWindow::on_pushButton_ajouter_clicked()
     bool test=E.ajouter();//inserer employé e dans la table
     if (test)
     {
-
+ui->tableView_2->setModel(E.afficher());
 
         QMessageBox::information(nullptr,QObject::tr("ok"),
                                  QObject::tr("ajout effectué \n"
@@ -53,8 +54,10 @@ void MainWindow::on_pushButton_ajouter_clicked()
 void MainWindow::on_pushButton_supprimer_clicked()
 {
     //recuperation du cin
-    int cin=ui->lineEdit_cin->text().toInt();
-    bool test=Etmp.supprimer(cin);//supprimer de la table
+    int cin=ui->lineEdit_cin->text().toInt();Employes E1;
+    bool test=E1.supprimer(cin);
+    ui->tableView_2->setModel(E1.afficher());
+
     if (test)
     {
 

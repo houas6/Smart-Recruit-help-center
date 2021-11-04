@@ -52,8 +52,9 @@ bool Employes::ajouter()
 bool Employes::supprimer(int cin)
 {
 QSqlQuery query;
+QString cin_string =QString::number(cin);
 query.prepare("Delete from EMPLOYES where cin=:cin");
-query.bindValue(":cin",cin);
+query.bindValue(":cin",cin_string);
 return    query.exec();
 }
 

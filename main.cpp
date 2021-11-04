@@ -6,9 +6,10 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    MainWindow w;
+
     Connection c;
     bool test=c.createConnection();
+    MainWindow w;
     if(test)
     {w.show();
         QMessageBox::information(nullptr, QObject::tr("database is open"),
@@ -24,4 +25,5 @@ int main(int argc, char *argv[])
 
 
     return a.exec();
+
 }
