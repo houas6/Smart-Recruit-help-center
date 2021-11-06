@@ -75,7 +75,7 @@ void MainWindow::on_pushButton_supprimer_clicked()
 
 void MainWindow::on_pushButton_modifier_clicked()
 {
-    int cin=ui->lineEdit_cin->text().toInt();
+    int cin=ui->lineEdit_cin->text().toInt();Employes E1;
     QString nom=ui->lineEdit_nom->text();
     QString prenom=ui->lineEdit_prenom->text();
     int age=ui->lineEdit_age->text().toInt();
@@ -87,7 +87,7 @@ void MainWindow::on_pushButton_modifier_clicked()
     if (test)
     {
 
-
+ui->tableView_2->setModel(E1.afficher());
         QMessageBox::information(nullptr,QObject::tr("ok"),
                                  QObject::tr("Modification effectué \n"
                                              "Click Cancel to exist ."),QMessageBox::Cancel);

@@ -79,6 +79,9 @@ QSqlQueryModel * Employes::afficher()
 bool Employes::modifier(int cin,QString nom,QString prenom,int age,int tel,QString adresse,QString departement)
 {
 QSqlQuery query;
+QString cin_string =QString::number(cin);
+QString age_string =QString::number(age);
+QString tel_string =QString::number(tel);
 query.prepare("update EMPLOYES set nom=:nom,prenom=:prenom,age=:age,tel=:tel,adresse=:adresse,departement=:departement where cin=:cin");
 query.bindValue(":cin", cin);
 query.bindValue(":nom", nom);
