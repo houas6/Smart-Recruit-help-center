@@ -34,8 +34,12 @@ bool Employes::ajouter()
     QString cin_string =QString::number(cin);
     QString age_string =QString::number(age);
     QString tel_string =QString::number(tel);
+    //prepare() prend la requete en parametre pour l'execution.
+
     query.prepare("INSERT INTO EMPLOYES (cin, nom, prenom, age, tel, adresse, departement) "
                         "VALUES (:cin, :nom, :prenom, :age, :tel, :adresse, :departement)");
+    //creation des variables liees
+
     query.bindValue(":cin",cin);
     query.bindValue(":nom",nom);
     query.bindValue(":prenom",prenom);
@@ -43,7 +47,7 @@ bool Employes::ajouter()
     query.bindValue(":tel",tel);
     query.bindValue(":adresse",adresse);
     query.bindValue(":departement",departement);
-    return    query.exec();
+    return    query.exec(); //exec() envoie de la requete pour l'executer.
 }
 
 
@@ -83,11 +87,11 @@ QString cin_string =QString::number(cin);
 QString age_string =QString::number(age);
 QString tel_string =QString::number(tel);
 query.prepare("update EMPLOYES set nom=:nom,prenom=:prenom,age=:age,tel=:tel,adresse=:adresse,departement=:departement where cin=:cin");
-query.bindValue(":cin", cin);
+query.bindValue(":cin", cin_string);
 query.bindValue(":nom", nom);
 query.bindValue(":prenom", prenom);
-query.bindValue(":age", age);
-query.bindValue(":tel", tel);
+query.bindValue(":age", age_string);
+query.bindValue(":tel", tel_string);
 query.bindValue(":adresse", adresse);
 query.bindValue(":departement", departement);
 return    query.exec();
