@@ -12,9 +12,9 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
 ui->tableView_2->setModel(Etmp.afficher());
-ui->lineEdit_cin->setValidator( new QIntValidator(0, 9999999, this) );
-ui->lineEdit_age->setValidator( new QIntValidator(0, 9999999, this) );
-ui->lineEdit_tel->setValidator( new QIntValidator(0, 9999999, this) );
+ui->lineEdit_cin->setValidator( new QIntValidator(0, 99999999, this) );
+ui->lineEdit_age->setValidator( new QIntValidator(0, 99, this) );
+ui->lineEdit_tel->setValidator( new QIntValidator(0, 99999999, this) );
 }
 
 MainWindow::~MainWindow()
