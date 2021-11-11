@@ -8,23 +8,29 @@
 
 class Collaboration
 {
-    QString nom,typeor,typec;
-    int num;
+    QString nom,adresse,mail;
+    int num,id;
 public:
     Collaboration(){}
-    Collaboration(QString,QString,QString,int);
+    Collaboration(QString,QString,QString,int,int);
     QString getnom(){return nom;}
-        QString gettypeor(){return typeor;}
-        QString gettypec (){return typec;}
+        QString getadresse(){return adresse;}
+        QString getmail (){return mail;}
         int  getnum(){return num;}
+        int  getid(){return id;}
         //
         void setnom(QString no){nom=no;}
-        void settypeor(QString tor){typeor=tor;}
-        void settypec(QString tc){typec=tc;}
+        void setadresse(QString ad){adresse=ad;}
+        void setmail(QString ml){mail=ml;}
         void setnum(int n){num=n;}
+        void setid(int i){id=i;}
         //
         bool ajouter();
         QSqlQueryModel * afficher();
+        bool supprimer (int id);
+        bool modifier(int id);
+        QSqlQueryModel *tri();
+        QSqlQueryModel *trinom();
 };
 
 #endif // COLLABORATION_H

@@ -15,6 +15,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->id->setValidator(new QIntValidator(0,99,this));
         ui->id_supp->setValidator(new QIntValidator(0,99,this));
     ui->num->setValidator(new QIntValidator(00000000,99999999,this));
+    ui->num_2->setValidator(new QIntValidator(00000000,99999999,this));
 
 
 }

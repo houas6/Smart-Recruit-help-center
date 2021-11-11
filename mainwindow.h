@@ -16,10 +16,19 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 private slots:
-    void on_on_pushButton_ajouter_clicked_clicked();
+
+    void on_pushButton_clicked();
+
+    void on_Supprimer_clicked();
+
+    void on_Modifier_clicked();
+
+    void on_pushButton_2_clicked();
+
+    void on_tri_name_clicked();
 
 private:
     Ui::MainWindow *ui;
-    Collaboration ptmp;
+    Collaboration tabb;
 };
 #endif // MAINWINDOW_H
