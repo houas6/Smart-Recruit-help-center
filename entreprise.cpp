@@ -1,4 +1,4 @@
-#include "GestionEntreprises.h"
+#include "entreprise.h"
 
 Entrprise::Entreprise()
 {
