@@ -15,6 +15,7 @@ ui->tableView_2->setModel(Etmp.afficher());
 ui->lineEdit_cin->setValidator( new QIntValidator(0, 99999999, this) );
 ui->lineEdit_age->setValidator( new QIntValidator(0, 99, this) );
 ui->lineEdit_tel->setValidator( new QIntValidator(0, 99999999, this) );
+
 }
 
 MainWindow::~MainWindow()
@@ -59,11 +60,10 @@ void MainWindow::on_pushButton_supprimer_clicked()
     //recuperation du cin
     int cin=ui->lineEdit_cin->text().toInt();Employes E1;
     bool test=E1.supprimer(cin);
-    ui->tableView_2->setModel(E1.afficher());
 
     if (test)
     {
-
+  ui->tableView_2->setModel(E1.afficher());
         QMessageBox::information(nullptr,QObject::tr("ok"),
                                  QObject::tr("suppression effectué \n"
                                              "Click Cancel to exist ."),QMessageBox::Cancel);
@@ -104,3 +104,48 @@ ui->tableView_2->setModel(E1.afficher());
 }
 
 
+
+void MainWindow::on_pushButton_trie_clicked()
+{
+    Employes E;
+
+    ui->tableView_2->setModel(E.trie_NOM());
+     ui->tableView_2->setModel(E.afficher());
+    bool test=E.trie_NOM();
+
+            if(test){
+ui->tableView_2->setModel(E.trie_NOM());
+
+                                QMessageBox::information(nullptr,QObject::tr("ok"),
+                                                         QObject::tr("trie effectué \n"
+                                                                     "Click Cancel to exist ."),QMessageBox::Cancel);
+
+
+                            }
+                            else
+                                  QMessageBox::critical(nullptr, QObject::tr("nonnnn"),
+                                              QObject::tr("trie failed.\n"
+                                                          "Click Cancel to exit."), QMessageBox::Cancel);
+}
+
+void MainWindow::on_pushButton_Recherche_clicked()
+{
+
+    int cin=ui->lineEdit_cin->text().toInt();Employes E;
+    bool test=E.recherche(cin);
+
+
+    if (test)
+    {
+
+
+        QMessageBox::information(nullptr,QObject::tr("ok"),
+                                 QObject::tr("recherche effectué \n"
+                                             "Click Cancel to exist ."),QMessageBox::Cancel);
+        ui->tableView_2->setModel(E.afficher());
+
+    }
+    else
+          QMessageBox::critical(nullptr, QObject::tr("no"),
+                      QObject::tr("recherche failed.\n"
+                                  "Click Cancel to exit."), QMessageBox::Cancel);}

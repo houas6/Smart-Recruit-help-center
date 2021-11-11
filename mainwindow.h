@@ -24,6 +24,10 @@ private slots:
 
 
 
+    void on_pushButton_trie_clicked();
+
+    void on_pushButton_Recherche_clicked();
+
 private:
     Ui::MainWindow *ui;
     Employes Etmp;

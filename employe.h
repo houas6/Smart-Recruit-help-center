@@ -28,6 +28,11 @@ public:
             QSqlQueryModel *afficher();
             bool supprimer(int);
             bool modifier(int,QString,QString,int,int,QString,QString);
+
+
+            //
+            QSqlQueryModel * trie_NOM();
+            QSqlQueryModel * recherche(int);
 };
 
 #endif // EMPLOYE_H

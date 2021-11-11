@@ -96,3 +96,25 @@ query.bindValue(":adresse", adresse);
 query.bindValue(":departement", departement);
 return    query.exec();
 }
+
+QSqlQueryModel * Employes::trie_NOM()
+{
+    QSqlQueryModel * model= new QSqlQueryModel();
+
+          model->setQuery("SELECT * FROM EMPLOYES ORDER BY nom ");
+          model->setHeaderData(0,Qt::Horizontal,QObject::tr("cin"));
+          model->setHeaderData(1,Qt::Horizontal,QObject::tr("nom"));
+        model->setHeaderData(2,Qt::Horizontal,QObject::tr("prenom"));
+            model->setHeaderData(3,Qt::Horizontal,QObject::tr("tel"));
+        model->setHeaderData(4,Qt::Horizontal,QObject::tr("adresse"));
+    return model;
+}
+
+QSqlQueryModel* Employes::recherche(int cin)
+    {
+
+        QSqlQueryModel * query=new QSqlQueryModel();
+        query->setQuery("SELECT * from EMPLOYES where cin=:cin ");
+       return    query;
+    }
+
