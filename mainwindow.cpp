@@ -107,45 +107,92 @@ ui->tableView_2->setModel(E1.afficher());
 
 void MainWindow::on_pushButton_trie_clicked()
 {
-    Employes E;
 
-    ui->tableView_2->setModel(E.trie_NOM());
-     ui->tableView_2->setModel(E.afficher());
-    bool test=E.trie_NOM();
+         Employes E;
+         QString choix=ui->comboBox_tri->currentText();
+         if (choix=="Nom")
+         {
+             ui->tableView_2->setModel(E.trie_NOM());
+             ui->tableView_2->setModel(E.afficher());
+             bool test=E.trie_NOM();//tri Nom
+             if (test)
+             {
 
-            if(test){
-ui->tableView_2->setModel(E.trie_NOM());
+         ui->tableView_2->setModel(E.trie_NOM());
+                 QMessageBox::information(nullptr,QObject::tr("ok"),
+                                          QObject::tr("tri Nom effectué \n"
+                                                      "Click Cancel to exist ."),QMessageBox::Cancel);
 
-                                QMessageBox::information(nullptr,QObject::tr("ok"),
-                                                         QObject::tr("trie effectué \n"
-                                                                     "Click Cancel to exist ."),QMessageBox::Cancel);
+             }
+             else
+                   QMessageBox::critical(nullptr, QObject::tr("nonnnn"),
+                               QObject::tr("tri Nom failed.\n"
+                                           "Click Cancel to exit."), QMessageBox::Cancel);
+         }
+         if (choix=="Prenom")
+         {
+             ui->tableView_2->setModel(E.trie_PRENOM());
+             ui->tableView_2->setModel(E.afficher());
+             bool test=E.trie_PRENOM();//tri prenom
+             if (test)
+             {
 
+         ui->tableView_2->setModel(E.trie_PRENOM());
+                 QMessageBox::information(nullptr,QObject::tr("ok"),
+                                          QObject::tr("tri prenom effectué \n"
+                                                      "Click Cancel to exist ."),QMessageBox::Cancel);
 
-                            }
-                            else
-                                  QMessageBox::critical(nullptr, QObject::tr("nonnnn"),
-                                              QObject::tr("trie failed.\n"
-                                                          "Click Cancel to exit."), QMessageBox::Cancel);
-}
+             }
+             else
+                   QMessageBox::critical(nullptr, QObject::tr("nonnnn"),
+                               QObject::tr("tri prenom failed.\n"
+                                           "Click Cancel to exit."), QMessageBox::Cancel);
+         }
+         if (choix=="Departement")
+         {
+             ui->tableView_2->setModel(E.trie_DEPARTEMENT());
+             ui->tableView_2->setModel(E.afficher());
+             bool test=E.trie_DEPARTEMENT();//tri produit
+             if (test)
+             {
+
+         ui->tableView_2->setModel(E.trie_DEPARTEMENT());
+                 QMessageBox::information(nullptr,QObject::tr("ok"),
+                                          QObject::tr("tri departement effectué \n"
+                                                      "Click Cancel to exist ."),QMessageBox::Cancel);
+
+             }
+             else
+                   QMessageBox::critical(nullptr, QObject::tr("nonnnn"),
+                               QObject::tr("tri departement failed.\n"
+                                           "Click Cancel to exit."), QMessageBox::Cancel);
+         }
+
+    }
+
 
 void MainWindow::on_pushButton_Recherche_clicked()
 {
 
-    int cin=ui->lineEdit_cin->text().toInt();Employes E;
-    bool test=E.recherche(cin);
+    int cin=ui->lineEdit_cin2->text().toInt();Employes E;
+
+    bool test=E.rech(cin);
 
 
     if (test)
     {
 
+ui->tableView_3->setModel(E.rech(cin));
+
 
         QMessageBox::information(nullptr,QObject::tr("ok"),
                                  QObject::tr("recherche effectué \n"
                                              "Click Cancel to exist ."),QMessageBox::Cancel);
-        ui->tableView_2->setModel(E.afficher());
+ui->tableView_3->setModel(E.afficher());
 
     }
     else
           QMessageBox::critical(nullptr, QObject::tr("no"),
                       QObject::tr("recherche failed.\n"
                                   "Click Cancel to exit."), QMessageBox::Cancel);}
+

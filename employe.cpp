@@ -3,6 +3,8 @@
 #include <QtSql/QSqlQuery>
 #include <QtSql/QSqlQueryModel>
 #include <QListView>
+#include <QtDebug>
+#include <QMessageBox>
 Employes::Employes()
 {
     cin=age=tel=0;
@@ -109,12 +111,45 @@ QSqlQueryModel * Employes::trie_NOM()
         model->setHeaderData(4,Qt::Horizontal,QObject::tr("adresse"));
     return model;
 }
+QSqlQueryModel * Employes::trie_PRENOM()
+{
+    QSqlQueryModel * model= new QSqlQueryModel();
 
-QSqlQueryModel* Employes::recherche(int cin)
+          model->setQuery("SELECT * FROM EMPLOYES ORDER BY prenom ");
+          model->setHeaderData(0,Qt::Horizontal,QObject::tr("cin"));
+          model->setHeaderData(1,Qt::Horizontal,QObject::tr("nom"));
+        model->setHeaderData(2,Qt::Horizontal,QObject::tr("prenom"));
+            model->setHeaderData(3,Qt::Horizontal,QObject::tr("tel"));
+        model->setHeaderData(4,Qt::Horizontal,QObject::tr("adresse"));
+    return model;
+}
+QSqlQueryModel * Employes::trie_DEPARTEMENT()
+{
+    QSqlQueryModel * model= new QSqlQueryModel();
+
+          model->setQuery("SELECT * FROM EMPLOYES ORDER BY departement ");
+          model->setHeaderData(0,Qt::Horizontal,QObject::tr("cin"));
+          model->setHeaderData(1,Qt::Horizontal,QObject::tr("nom"));
+        model->setHeaderData(2,Qt::Horizontal,QObject::tr("prenom"));
+            model->setHeaderData(3,Qt::Horizontal,QObject::tr("tel"));
+        model->setHeaderData(4,Qt::Horizontal,QObject::tr("adresse"));
+    return model;
+}
+
+QSqlQueryModel* Employes::rech(int cin)
     {
 
-        QSqlQueryModel * query=new QSqlQueryModel();
-        query->setQuery("SELECT * from EMPLOYES where cin=:cin ");
-       return    query;
+    QSqlQueryModel * model= new QSqlQueryModel();
+
+            model->setQuery("SELECT * FROM EMPLOYES where cin:=cin ");
+            model->query().bindValue(":cin",cin);
+            model->setHeaderData(0, Qt::Horizontal, QObject::tr("cin"));
+            model->setHeaderData(1, Qt::Horizontal, QObject::tr("nom"));
+            model->setHeaderData(2, Qt::Horizontal, QObject::tr("prenom"));
+            model->setHeaderData(3, Qt::Horizontal, QObject::tr("age"));
+            model->setHeaderData(4, Qt::Horizontal, QObject::tr("telephone"));
+            model->setHeaderData(5, Qt::Horizontal, QObject::tr("adresse"));
+            model->setHeaderData(6, Qt::Horizontal, QObject::tr("departement"));
+            return model;
     }
 

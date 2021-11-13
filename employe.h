@@ -32,7 +32,10 @@ public:
 
             //
             QSqlQueryModel * trie_NOM();
-            QSqlQueryModel * recherche(int);
+            QSqlQueryModel * trie_PRENOM();
+            QSqlQueryModel * trie_DEPARTEMENT();
+            QSqlQueryModel * rech(int);
+
 };
 
 #endif // EMPLOYE_H
