@@ -1,10 +1,11 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "employe.h"
+#include "QrCode.hpp"
 #include <QMessageBox>
 #include <QStandardItemModel>
 #include <QtSql/QSqlQueryModel>
-
+using namespace qrcodegen;
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -287,4 +288,49 @@ void MainWindow::on_tabWidget_currentChanged(int index)
                   legendFont.setPointSize(5);
                   ui->plot->legend->setFont(legendFont);
                   ui->plot->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom);
+}
+
+
+
+void MainWindow::on_qrpushbutton_clicked()
+{
+    int tabeq=ui->tableView_2->currentIndex().row();
+        QVariant cinn=ui->tableView_2->model()->data(ui->tableView_2->model()->index(tabeq,0));
+        int cin= cinn.toInt();
+        QSqlQuery qry;
+        qry.prepare("select * from EMPLOYES where cin=:cin");
+        qry.bindValue(":cin",cin);
+        qry.exec();
+        QString nom, prenom ,adresse,departement,cine;
+        int age,tel;
+        while(qry.next()){
+            nom=qry.value(1).toString();
+            prenom=qry.value(2).toString();
+            adresse=qry.value(3).toString();
+            departement=qry.value(4).toString();
+        }
+         cine=QString(cin);
+         cine="cin: "+cine+"nom: "+nom+" prenom: "+prenom+"age:"+age+"tel:"+tel+" adresse: "+adresse+" departement : "+departement;
+        QrCode qr = QrCode::encodeText(cine.toUtf8().constData(), QrCode::Ecc::HIGH);
+
+        // Read the black & white pixels
+        QImage im(qr.getSize(),qr.getSize(), QImage::Format_RGB888);
+        for (int y = 0; y < qr.getSize(); y++) {
+            for (int x = 0; x < qr.getSize(); x++) {
+                int color = qr.getModule(x, y);  // 0 for white, 1 for black
+
+                // You need to modify this part
+                if(color==0)
+                    im.setPixel(x, y,qRgb(254, 254, 254));
+                else
+                    im.setPixel(x, y,qRgb(0, 0, 0));
+            }
+        }
+        im=im.scaled(200,200);
+        ui->qrlabel->setPixmap(QPixmap::fromImage(im));
+        int i=0 ;
+        for(i=0;i<100;i=i+0.1){
+            i++;
+            ui->progressBar->setValue(i);
+        }
 }

@@ -3,6 +3,7 @@
 #include<QString>
 #include<QSqlQuery>
 #include<QSqlQueryModel>
+#include "QrCode.hpp"
 
 class Employes
 {
