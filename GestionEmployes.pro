@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui sql serialport printsupport network charts multimedia widgets concurrent
 QT += sql
 QT += widgets
 QT += network
@@ -23,6 +23,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     QrCode.cpp \
+    chat.cpp \
     connection.cpp \
     employe.cpp \
     main.cpp \
@@ -31,12 +32,14 @@ SOURCES += \
 
 HEADERS += \
     QrCode.hpp \
+    chat.h \
     connection.h \
     employe.h \
     mainwindow.h \
     qcustomplot.h
 
 FORMS += \
+    chat.ui \
     mainwindow.ui
 
 # Default rules for deployment.

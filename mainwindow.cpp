@@ -5,6 +5,7 @@
 #include <QMessageBox>
 #include <QStandardItemModel>
 #include <QtSql/QSqlQueryModel>
+#include "chat.h"
 using namespace qrcodegen;
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -16,11 +17,7 @@ ui->tableView_2->setModel(Etmp.afficher());
 ui->lineEdit_cin->setValidator( new QIntValidator(0, 99999999, this) );
 ui->lineEdit_age->setValidator( new QIntValidator(0, 99, this) );
 ui->lineEdit_tel->setValidator( new QIntValidator(0, 99999999, this) );
-mServer=new QTcpServer(this);
-mServer->listen(QHostAddress::Any,2000);
-mSocket=new QTcpSocket(this);
 
-connect(mServer,SIGNAL(newConnection()),this,SLOT(connexion_nueva()));
 
 }
 
@@ -28,25 +25,7 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
-void MainWindow::connexion_nueva()
-{
-    mSocket=mServer->nextPendingConnection();
-    connect(mSocket,SIGNAL(readyRead()),this,SLOT(leer_socket()));
-}
-void MainWindow:: leer_socket()
-{
-    QByteArray buffer;
-    buffer.resize(mSocket->bytesAvailable());
-    mSocket->read(buffer.data(),buffer.size());
-    ui->plainTextEdit->setReadOnly(true);
-    ui->plainTextEdit->appendPlainText(QString(buffer));
-}
-void MainWindow::on_pushButton_clicked()
-{
-    mSocket->write(ui->lineEdit->text().toLatin1().data(),ui->lineEdit->text().size());
-    ui->plainTextEdit->appendPlainText(ui->lineEdit->text());
-    ui->lineEdit->clear();
-}
+
 
 void MainWindow::on_pushButton_ajouter_clicked()
 {
@@ -333,4 +312,32 @@ void MainWindow::on_qrpushbutton_clicked()
             i++;
             ui->progressBar->setValue(i);
         }
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+    chat *chat_window= new chat(this);
+        chat_window->setModal(true);
+        chat_window->show();
+
+        //qDebug()<< "Chat is running on " << QThread::currentThread();
+
+        chat_window->exec();
+
+
+
+        //    QFuture<bool> future= QtConcurrent::run(this,&MainWindow::launch_chat,chat_window);
+
+        //    qDebug() << "Min thread free ...";
+        //    qDebug() << "Result: " << future.result();
+}
+
+bool MainWindow::launch_chat(chat &chat_window)
+{
+    chat_window.setModal(true);
+    chat_window.show();
+
+    qDebug()<< "Chat is running on " << QThread::currentThread();
+
+    return chat_window.exec();
 }

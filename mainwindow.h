@@ -5,6 +5,7 @@
 #include <QTableWidget>
 #include <QTcpServer>
 #include<QTcpSocket>
+#include"chat.h"
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -29,21 +30,18 @@ private slots:
     void on_pushButton_trie_clicked();
 
     void on_pushButton_Recherche_clicked();
-    void connexion_nueva();
-    void leer_socket();
 
-    void on_pushButton_clicked();
 
 
     void on_tabWidget_currentChanged(int index);
 
     void on_qrpushbutton_clicked();
 
+    void on_pushButton_clicked();
+    bool launch_chat(chat&);
 private:
     Ui::MainWindow *ui;
     Employes Etmp;
-    QTcpServer*mServer;
-    QTcpSocket*mSocket;
 
 };
 #endif // MAINWINDOW_H
