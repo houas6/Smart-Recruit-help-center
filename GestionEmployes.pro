@@ -2,8 +2,11 @@ QT       += core gui
 QT += sql
 QT += widgets
 QT += network
+QT       += core gui sql printsupport multimedia
+QT += widgets multimedia
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+
 
 CONFIG += c++11
 
@@ -22,12 +25,14 @@ SOURCES += \
     connection.cpp \
     employe.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    qcustomplot.cpp
 
 HEADERS += \
     connection.h \
     employe.h \
-    mainwindow.h
+    mainwindow.h \
+    qcustomplot.h
 
 FORMS += \
     mainwindow.ui

@@ -200,3 +200,16 @@ QSqlQueryModel* Employes::rechercherprenom(QString a)
             model->setHeaderData(6, Qt::Horizontal, QObject::tr("departement"));
             return model;
     }
+void Employes::statistique(QVector<double>* ticks,QVector<QString> *labels)
+{
+    QSqlQuery q;
+    int i=0;
+    q.exec("select age from EMPLOYES");
+    while (q.next())
+    {
+        QString identifiant = q.value(0).toString();
+        i++;
+        *ticks<<i;
+        *labels <<identifiant;
+    }
+}

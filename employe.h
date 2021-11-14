@@ -40,6 +40,7 @@ public:
             QSqlQueryModel* recherchernom(QString);
             bool rechprenom(QString);
             QSqlQueryModel* rechercherprenom(QString);
+            void statistique(QVector<double>* ticks,QVector<QString> *labels);
 
 
 

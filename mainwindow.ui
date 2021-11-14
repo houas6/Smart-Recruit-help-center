@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -447,36 +447,51 @@ background:#6a1616;
        </property>
       </item>
      </widget>
+    </widget>
+    <widget class="QWidget" name="tab_3">
+     <attribute name="title">
+      <string>recherche</string>
+     </attribute>
+     <widget class="QTableView" name="tableView_3">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>120</y>
+        <width>591</width>
+        <height>231</height>
+       </rect>
+      </property>
+     </widget>
      <widget class="QComboBox" name="comboBox_chercher">
       <property name="geometry">
        <rect>
-        <x>500</x>
-        <y>230</y>
+        <x>40</x>
+        <y>40</y>
         <width>111</width>
         <height>31</height>
        </rect>
       </property>
       <item>
        <property name="text">
-        <string>         Cin</string>
+        <string>Cin</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>         Nom</string>
+        <string>Nom</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>         Prenom</string>
+        <string>Prenom</string>
        </property>
       </item>
      </widget>
      <widget class="QLineEdit" name="lineEdit_rech">
       <property name="geometry">
        <rect>
-        <x>480</x>
-        <y>270</y>
+        <x>180</x>
+        <y>50</y>
         <width>141</width>
         <height>21</height>
        </rect>
@@ -485,8 +500,8 @@ background:#6a1616;
      <widget class="QPushButton" name="pushButton_Recherche">
       <property name="geometry">
        <rect>
-        <x>510</x>
-        <y>320</y>
+        <x>370</x>
+        <y>40</y>
         <width>91</width>
         <height>41</height>
        </rect>
@@ -500,6 +515,21 @@ background:#6a1616;
       </property>
       <property name="text">
        <string>Rechercher</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_5">
+     <attribute name="title">
+      <string>Stat</string>
+     </attribute>
+     <widget class="QCustomPlot" name="plot" native="true">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>591</width>
+        <height>301</height>
+       </rect>
       </property>
      </widget>
     </widget>
@@ -555,6 +585,14 @@ background:#6a1616;
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QCustomPlot</class>
+   <extends>QWidget</extends>
+   <header>qcustomplot.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

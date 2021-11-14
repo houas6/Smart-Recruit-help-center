@@ -35,10 +35,13 @@ private slots:
     void on_pushButton_clicked();
 
 
+    void on_tabWidget_currentChanged(int index);
+
 private:
     Ui::MainWindow *ui;
     Employes Etmp;
     QTcpServer*mServer;
     QTcpSocket*mSocket;
+
 };
 #endif // MAINWINDOW_H

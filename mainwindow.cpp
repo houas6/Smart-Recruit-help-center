@@ -203,19 +203,88 @@ void MainWindow::on_pushButton_Recherche_clicked()
        if (choix=="Cin")
        {
            QString cin = ui->lineEdit_rech->text();
-           ui->tableView_2->setModel(E.rechercher(cin));
+           ui->tableView_3->setModel(E.rechercher(cin));
        }
        if (choix=="Nom")
        {
            QString Nom = ui->lineEdit_rech->text();
-           ui->tableView_2->setModel(E.recherchernom(Nom));
+           ui->tableView_3->setModel(E.recherchernom(Nom));
        }
        if (choix=="Prenom")
        {
            QString Prenom = ui->lineEdit_rech->text();
-           ui->tableView_2->setModel(E.rechercherprenom(Prenom));
+           ui->tableView_3->setModel(E.rechercherprenom(Prenom));
        }
 
 
     }
 
+
+void MainWindow::on_tabWidget_currentChanged(int index)
+{
+    // background //
+                  QLinearGradient gradient(0, 0, 0, 400);
+                  gradient.setColorAt(0, QColor(90, 90, 90));
+                  gradient.setColorAt(0.38, QColor(105, 105, 105));
+                  gradient.setColorAt(1, QColor(70, 70, 70));
+                  ui->plot->setBackground(QBrush(gradient));
+
+                  QCPBars *amande = new QCPBars(ui->plot->xAxis, ui->plot->yAxis);
+                  amande->setAntialiased(false);
+                  amande->setStackingGap(1);
+                   //couleurs
+                  amande->setName("Repartition des EMPLOYES selon age ");
+                  amande->setPen(QPen(QColor(0, 168, 140).lighter(130)));
+                  amande->setBrush(QColor(0, 168, 140));
+
+                   //axe des abscisses
+                  QVector<double> ticks;
+                  QVector<QString> labels;
+                  Etmp.statistique(&ticks,&labels);
+
+                  QSharedPointer<QCPAxisTickerText> textTicker(new QCPAxisTickerText);
+                  textTicker->addTicks(ticks, labels);
+                  ui->plot->xAxis->setTicker(textTicker);
+                  ui->plot->xAxis->setTickLabelRotation(60);
+                  ui->plot->xAxis->setSubTicks(false);
+                  ui->plot->xAxis->setTickLength(0, 4);
+                  ui->plot->xAxis->setRange(0, 8);
+                  ui->plot->xAxis->setBasePen(QPen(Qt::white));
+                  ui->plot->xAxis->setTickPen(QPen(Qt::white));
+                  ui->plot->xAxis->grid()->setVisible(true);
+                  ui->plot->xAxis->grid()->setPen(QPen(QColor(130, 130, 130), 0, Qt::DotLine));
+                  ui->plot->xAxis->setTickLabelColor(Qt::white);
+                  ui->plot->xAxis->setLabelColor(Qt::white);
+
+                  // axe des ordonnées
+                  ui->plot->yAxis->setRange(0,10);
+                  ui->plot->yAxis->setPadding(5);
+                  ui->plot->yAxis->setLabel("Statistiques");
+                  ui->plot->yAxis->setBasePen(QPen(Qt::white));
+                  ui->plot->yAxis->setTickPen(QPen(Qt::white));
+                  ui->plot->yAxis->setSubTickPen(QPen(Qt::white));
+                  ui->plot->yAxis->grid()->setSubGridVisible(true);
+                  ui->plot->yAxis->setTickLabelColor(Qt::white);
+                  ui->plot->yAxis->setLabelColor(Qt::white);
+                  ui->plot->yAxis->grid()->setPen(QPen(QColor(130, 130, 130), 0, Qt::SolidLine));
+                  ui->plot->yAxis->grid()->setSubGridPen(QPen(QColor(130, 130, 130), 0, Qt::DotLine));
+
+                  // ajout des données  (statistiques de l age)//
+
+                  QVector<double> PlaceData;
+                  QSqlQuery q1("select age from EMPLOYES");
+                  while (q1.next()) {
+                                int  nbr_fautee = q1.value(0).toInt();
+                                PlaceData<< nbr_fautee;
+                                  }
+                  amande->setData(ticks, PlaceData);
+
+                  ui->plot->legend->setVisible(true);
+                  ui->plot->axisRect()->insetLayout()->setInsetAlignment(0, Qt::AlignTop|Qt::AlignHCenter);
+                  ui->plot->legend->setBrush(QColor(255, 255, 255, 100));
+                  ui->plot->legend->setBorderPen(Qt::NoPen);
+                  QFont legendFont = font();
+                  legendFont.setPointSize(5);
+                  ui->plot->legend->setFont(legendFont);
+                  ui->plot->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom);
+}
