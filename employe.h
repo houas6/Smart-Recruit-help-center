@@ -34,7 +34,15 @@ public:
             QSqlQueryModel * trie_NOM();
             QSqlQueryModel * trie_PRENOM();
             QSqlQueryModel * trie_DEPARTEMENT();
-            QSqlQueryModel * rech(int);
+            bool rech(int);
+            QSqlQueryModel* rechercher(QString);
+            bool rechnom(QString);
+            QSqlQueryModel* recherchernom(QString);
+            bool rechprenom(QString);
+            QSqlQueryModel* rechercherprenom(QString);
+
+
+
 
 };
 

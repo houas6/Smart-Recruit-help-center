@@ -135,14 +135,19 @@ QSqlQueryModel * Employes::trie_DEPARTEMENT()
         model->setHeaderData(4,Qt::Horizontal,QObject::tr("adresse"));
     return model;
 }
+bool Employes::rech(int x){
+    QSqlQuery query;
+    query.prepare("select * from EMPLOYES where cin = :cin;");
+    query.bindValue(":cin", x);
+    return query.exec();
+}
 
-QSqlQueryModel* Employes::rech(int cin)
+QSqlQueryModel* Employes::rechercher(QString a)
     {
 
     QSqlQueryModel * model= new QSqlQueryModel();
 
-            model->setQuery("SELECT * FROM EMPLOYES where cin:=cin ");
-            model->query().bindValue(":cin",cin);
+            model->setQuery("select * from EMPLOYES where cin ='"+a+"' ");
             model->setHeaderData(0, Qt::Horizontal, QObject::tr("cin"));
             model->setHeaderData(1, Qt::Horizontal, QObject::tr("nom"));
             model->setHeaderData(2, Qt::Horizontal, QObject::tr("prenom"));
@@ -153,3 +158,45 @@ QSqlQueryModel* Employes::rech(int cin)
             return model;
     }
 
+bool Employes::rechnom(QString x){
+    QSqlQuery query;
+    query.prepare("select * from EMPLOYES where nom = :nom;");
+    query.bindValue(":nom", x);
+    return query.exec();}
+
+QSqlQueryModel* Employes::recherchernom(QString a)
+    {
+
+    QSqlQueryModel * model= new QSqlQueryModel();
+
+            model->setQuery("select * from EMPLOYES where nom ='"+a+"' ");
+            model->setHeaderData(0, Qt::Horizontal, QObject::tr("cin"));
+            model->setHeaderData(1, Qt::Horizontal, QObject::tr("nom"));
+            model->setHeaderData(2, Qt::Horizontal, QObject::tr("prenom"));
+            model->setHeaderData(3, Qt::Horizontal, QObject::tr("age"));
+            model->setHeaderData(4, Qt::Horizontal, QObject::tr("telephone"));
+            model->setHeaderData(5, Qt::Horizontal, QObject::tr("adresse"));
+            model->setHeaderData(6, Qt::Horizontal, QObject::tr("departement"));
+            return model;
+    }
+bool Employes::rechprenom(QString x){
+    QSqlQuery query;
+    query.prepare("select * from EMPLOYES where prenom = :prenom;");
+    query.bindValue(":prenom", x);
+    return query.exec();
+}
+QSqlQueryModel* Employes::rechercherprenom(QString a)
+    {
+
+    QSqlQueryModel * model= new QSqlQueryModel();
+
+            model->setQuery("select * from EMPLOYES where prenom ='"+a+"' ");
+            model->setHeaderData(0, Qt::Horizontal, QObject::tr("cin"));
+            model->setHeaderData(1, Qt::Horizontal, QObject::tr("nom"));
+            model->setHeaderData(2, Qt::Horizontal, QObject::tr("prenom"));
+            model->setHeaderData(3, Qt::Horizontal, QObject::tr("age"));
+            model->setHeaderData(4, Qt::Horizontal, QObject::tr("telephone"));
+            model->setHeaderData(5, Qt::Horizontal, QObject::tr("adresse"));
+            model->setHeaderData(6, Qt::Horizontal, QObject::tr("departement"));
+            return model;
+    }

@@ -390,7 +390,7 @@ background:#6a1616;
     </widget>
     <widget class="QWidget" name="tab_2">
      <attribute name="title">
-      <string>Tab 2</string>
+      <string>affichage+tri</string>
      </attribute>
      <widget class="QTableView" name="tableView_2">
       <property name="geometry">
@@ -447,36 +447,46 @@ background:#6a1616;
        </property>
       </item>
      </widget>
-    </widget>
-    <widget class="QWidget" name="tab_3">
-     <attribute name="title">
-      <string>Page</string>
-     </attribute>
-     <widget class="QTableView" name="tableView_3">
+     <widget class="QComboBox" name="comboBox_chercher">
       <property name="geometry">
        <rect>
-        <x>235</x>
-        <y>50</y>
-        <width>401</width>
-        <height>281</height>
+        <x>500</x>
+        <y>230</y>
+        <width>111</width>
+        <height>31</height>
        </rect>
       </property>
+      <item>
+       <property name="text">
+        <string>         Cin</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>         Nom</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>         Prenom</string>
+       </property>
+      </item>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_cin2">
+     <widget class="QLineEdit" name="lineEdit_rech">
       <property name="geometry">
        <rect>
-        <x>100</x>
-        <y>80</y>
-        <width>113</width>
-        <height>20</height>
+        <x>480</x>
+        <y>270</y>
+        <width>141</width>
+        <height>21</height>
        </rect>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_Recherche">
       <property name="geometry">
        <rect>
-        <x>90</x>
-        <y>220</y>
+        <x>510</x>
+        <y>320</y>
         <width>91</width>
         <height>41</height>
        </rect>
@@ -492,17 +502,42 @@ background:#6a1616;
        <string>Rechercher</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label">
+    </widget>
+    <widget class="QWidget" name="tab_4">
+     <attribute name="title">
+      <string>chat</string>
+     </attribute>
+     <widget class="QPlainTextEdit" name="plainTextEdit">
       <property name="geometry">
        <rect>
-        <x>40</x>
-        <y>80</y>
-        <width>51</width>
-        <height>16</height>
+        <x>10</x>
+        <y>10</y>
+        <width>531</width>
+        <height>307</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>330</y>
+        <width>531</width>
+        <height>20</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton">
+      <property name="geometry">
+       <rect>
+        <x>550</x>
+        <y>330</y>
+        <width>75</width>
+        <height>23</height>
        </rect>
       </property>
       <property name="text">
-       <string>CIN</string>
+       <string>envoyer</string>
       </property>
      </widget>
     </widget>

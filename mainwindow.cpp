@@ -15,12 +15,36 @@ ui->tableView_2->setModel(Etmp.afficher());
 ui->lineEdit_cin->setValidator( new QIntValidator(0, 99999999, this) );
 ui->lineEdit_age->setValidator( new QIntValidator(0, 99, this) );
 ui->lineEdit_tel->setValidator( new QIntValidator(0, 99999999, this) );
+mServer=new QTcpServer(this);
+mServer->listen(QHostAddress::Any,2000);
+mSocket=new QTcpSocket(this);
+
+connect(mServer,SIGNAL(newConnection()),this,SLOT(connexion_nueva()));
 
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+void MainWindow::connexion_nueva()
+{
+    mSocket=mServer->nextPendingConnection();
+    connect(mSocket,SIGNAL(readyRead()),this,SLOT(leer_socket()));
+}
+void MainWindow:: leer_socket()
+{
+    QByteArray buffer;
+    buffer.resize(mSocket->bytesAvailable());
+    mSocket->read(buffer.data(),buffer.size());
+    ui->plainTextEdit->setReadOnly(true);
+    ui->plainTextEdit->appendPlainText(QString(buffer));
+}
+void MainWindow::on_pushButton_clicked()
+{
+    mSocket->write(ui->lineEdit->text().toLatin1().data(),ui->lineEdit->text().size());
+    ui->plainTextEdit->appendPlainText(ui->lineEdit->text());
+    ui->lineEdit->clear();
 }
 
 void MainWindow::on_pushButton_ajouter_clicked()
@@ -173,26 +197,25 @@ void MainWindow::on_pushButton_trie_clicked()
 
 void MainWindow::on_pushButton_Recherche_clicked()
 {
+    Employes E;
+       QString choix=ui->comboBox_chercher->currentText();
 
-    int cin=ui->lineEdit_cin2->text().toInt();Employes E;
+       if (choix=="Cin")
+       {
+           QString cin = ui->lineEdit_rech->text();
+           ui->tableView_2->setModel(E.rechercher(cin));
+       }
+       if (choix=="Nom")
+       {
+           QString Nom = ui->lineEdit_rech->text();
+           ui->tableView_2->setModel(E.recherchernom(Nom));
+       }
+       if (choix=="Prenom")
+       {
+           QString Prenom = ui->lineEdit_rech->text();
+           ui->tableView_2->setModel(E.rechercherprenom(Prenom));
+       }
 
-    bool test=E.rech(cin);
-
-
-    if (test)
-    {
-
-ui->tableView_3->setModel(E.rech(cin));
-
-
-        QMessageBox::information(nullptr,QObject::tr("ok"),
-                                 QObject::tr("recherche effectué \n"
-                                             "Click Cancel to exist ."),QMessageBox::Cancel);
-ui->tableView_3->setModel(E.afficher());
 
     }
-    else
-          QMessageBox::critical(nullptr, QObject::tr("no"),
-                      QObject::tr("recherche failed.\n"
-                                  "Click Cancel to exit."), QMessageBox::Cancel);}
 

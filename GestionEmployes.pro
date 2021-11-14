@@ -1,7 +1,7 @@
 QT       += core gui
 QT += sql
 QT += widgets
-
+QT += network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -22,14 +22,12 @@ SOURCES += \
     connection.cpp \
     employe.cpp \
     main.cpp \
-    mainwindow.cpp \
-    qrwidget.cpp
+    mainwindow.cpp
 
 HEADERS += \
     connection.h \
     employe.h \
-    mainwindow.h \
-    qrwidget.h
+    mainwindow.h
 
 FORMS += \
     mainwindow.ui
