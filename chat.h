@@ -33,8 +33,8 @@ private:
     Ui::chat *ui;
 //    QUdpSocket *socketServer;
 //    QUdpSocket *socketServerc;
-    QUdpSocket *clientSocket;
-    QUdpSocket *clientSocketc;
+    QUdpSocket *employeSocket;
+    QUdpSocket *employeSocketc;
 
 };
 
