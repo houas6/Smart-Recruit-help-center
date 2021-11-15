@@ -5,6 +5,8 @@
 #include <QListView>
 #include <QtDebug>
 #include <QMessageBox>
+
+
 Employes::Employes()
 {
     cin=age=tel=0;

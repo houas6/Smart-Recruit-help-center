@@ -5,6 +5,7 @@
 #include <QtSql/QSqlQuery>
 
 
+
 class Connection
 {
   QSqlDatabase db;

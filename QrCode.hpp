@@ -21,6 +21,7 @@
  *   Software.
  */
 
+
 #pragma once
 
 #include <array>

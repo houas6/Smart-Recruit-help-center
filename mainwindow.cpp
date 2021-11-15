@@ -6,6 +6,7 @@
 #include <QStandardItemModel>
 #include <QtSql/QSqlQueryModel>
 #include "chat.h"
+
 using namespace qrcodegen;
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)

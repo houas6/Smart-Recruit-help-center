@@ -5,6 +5,7 @@
 #include<QSqlQueryModel>
 #include "QrCode.hpp"
 
+
 class Employes
 {
     //attribu
