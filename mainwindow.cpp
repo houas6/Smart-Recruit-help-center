@@ -323,13 +323,6 @@ void MainWindow::on_pushButton_clicked()
         //qDebug()<< "Chat is running on " << QThread::currentThread();
 
         chat_window->exec();
-
-
-
-        //    QFuture<bool> future= QtConcurrent::run(this,&MainWindow::launch_chat,chat_window);
-
-        //    qDebug() << "Min thread free ...";
-        //    qDebug() << "Result: " << future.result();
 }
 
 bool MainWindow::launch_chat(chat &chat_window)
