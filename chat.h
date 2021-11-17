@@ -1,7 +1,5 @@
 #ifndef CHAT_H
 #define CHAT_H
-
-
 #include <QDialog>
 #include <QUdpSocket>
 #include <QtConcurrent>
