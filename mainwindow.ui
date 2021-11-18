@@ -275,6 +275,9 @@ background:#6a1616;
        <property name="maxLength">
         <number>8</number>
        </property>
+       <property name="placeholderText">
+        <string>********</string>
+       </property>
        <property name="type" stdset="0">
         <number>8</number>
        </property>
@@ -290,6 +293,9 @@ background:#6a1616;
        </property>
        <property name="maxLength">
         <number>2</number>
+       </property>
+       <property name="placeholderText">
+        <string>Entre 18 et 65 ans</string>
        </property>
       </widget>
       <widget class="QLineEdit" name="lineEdit_tel">
@@ -309,6 +315,9 @@ background:#6a1616;
        </property>
        <property name="maxLength">
         <number>8</number>
+       </property>
+       <property name="placeholderText">
+        <string>+216</string>
        </property>
        <property name="type" stdset="0">
         <number>8</number>
