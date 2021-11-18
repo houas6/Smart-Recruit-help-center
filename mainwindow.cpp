@@ -281,16 +281,15 @@ void MainWindow::on_qrpushbutton_clicked()
         qry.prepare("select * from EMPLOYES where cin=:cin");
         qry.bindValue(":cin",cin);
         qry.exec();
-        QString nom, prenom ,adresse,departement,cine;
-        int age,tel;
+        QString nom, prenom,cine;
+
         while(qry.next()){
             nom=qry.value(1).toString();
             prenom=qry.value(2).toString();
-            adresse=qry.value(3).toString();
-            departement=qry.value(4).toString();
+
         }
-         cine=QString(cin);
-         cine="cin: "+cine+"nom: "+nom+" prenom: "+prenom+"age:"+age+"tel:"+tel+" adresse: "+adresse+" departement : "+departement;
+         cine=int(cin);
+         cine="cin: "+cine+"nom: "+nom+" prenom: "+prenom;
         QrCode qr = QrCode::encodeText(cine.toUtf8().constData(), QrCode::Ecc::HIGH);
 
         // Read the black & white pixels

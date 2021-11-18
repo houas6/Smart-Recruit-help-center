@@ -28,7 +28,7 @@
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
-      <string>Tab 1</string>
+      <string>ajout mod supp</string>
      </attribute>
      <widget class="QGroupBox" name="GestiondesEmploys">
       <property name="geometry">
@@ -559,6 +559,13 @@ background:#6a1616;
         <height>28</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton:hover {
+color:#fff;
+border:15px;
+background:#6a1616;
+}</string>
+      </property>
       <property name="text">
        <string>qrcode</string>
       </property>
@@ -589,6 +596,13 @@ background:#6a1616;
         <width>161</width>
         <height>71</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton:hover {
+color:#fff;
+border:15px;
+background:#6a1616;
+}</string>
       </property>
       <property name="text">
        <string>Chat</string>
