@@ -215,8 +215,8 @@ void MainWindow::on_tabWidget_currentChanged(int index)
                   amande->setStackingGap(1);
                    //couleurs
                   amande->setName("Repartition des EMPLOYES selon age ");
-                  amande->setPen(QPen(QColor(0, 168, 140).lighter(130)));
-                  amande->setBrush(QColor(0, 168, 140));
+                  amande->setPen(QPen(QColor(111, 9, 176).lighter(170)));
+                  amande->setBrush(QColor(111, 9, 176));
 
                    //axe des abscisses
                   QVector<double> ticks;
