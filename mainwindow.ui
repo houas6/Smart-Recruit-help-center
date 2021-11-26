@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1195</width>
-    <height>752</height>
+    <width>1194</width>
+    <height>762</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -28,7 +28,7 @@
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
-      <string>Creation</string>
+      <string>Info</string>
      </attribute>
      <widget class="QGroupBox" name="groupBox">
       <property name="geometry">
@@ -217,7 +217,7 @@
        <property name="geometry">
         <rect>
          <x>170</x>
-         <y>540</y>
+         <y>590</y>
          <width>93</width>
          <height>28</height>
         </rect>
@@ -229,8 +229,8 @@
       <widget class="QPushButton" name="Supprimer">
        <property name="geometry">
         <rect>
-         <x>30</x>
-         <y>540</y>
+         <x>60</x>
+         <y>590</y>
          <width>93</width>
          <height>28</height>
         </rect>
@@ -392,6 +392,255 @@
         <string>Tri Nom</string>
        </property>
       </widget>
+      <widget class="QPushButton" name="Find">
+       <property name="geometry">
+        <rect>
+         <x>480</x>
+         <y>590</y>
+         <width>93</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Recherche id</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="Find_line">
+       <property name="geometry">
+        <rect>
+         <x>580</x>
+         <y>590</y>
+         <width>113</width>
+         <height>22</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="Find_nom">
+       <property name="geometry">
+        <rect>
+         <x>700</x>
+         <y>590</y>
+         <width>93</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Recherche nom</string>
+       </property>
+      </widget>
+      <widget class="QDateEdit" name="dateStart">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>30</y>
+         <width>110</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="dateTime">
+        <datetime>
+         <hour>0</hour>
+         <minute>0</minute>
+         <second>0</second>
+         <year>2021</year>
+         <month>11</month>
+         <day>9</day>
+        </datetime>
+       </property>
+       <property name="currentSection">
+        <enum>QDateTimeEdit::MonthSection</enum>
+       </property>
+       <property name="date">
+        <date>
+         <year>2021</year>
+         <month>11</month>
+         <day>9</day>
+        </date>
+       </property>
+      </widget>
+      <widget class="QDateEdit" name="dateEnd">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>60</y>
+         <width>110</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="calendarPopup">
+        <bool>false</bool>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="update">
+       <property name="geometry">
+        <rect>
+         <x>590</x>
+         <y>620</y>
+         <width>93</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Update</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_3">
+       <property name="geometry">
+        <rect>
+         <x>920</x>
+         <y>620</y>
+         <width>93</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>export</string>
+       </property>
+      </widget>
+      <widget class="QDateEdit" name="dateEnd_2">
+       <property name="geometry">
+        <rect>
+         <x>140</x>
+         <y>550</y>
+         <width>110</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="calendarPopup">
+        <bool>false</bool>
+       </property>
+      </widget>
+      <widget class="QDateEdit" name="dateStart_2">
+       <property name="geometry">
+        <rect>
+         <x>140</x>
+         <y>520</y>
+         <width>110</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="dateTime">
+        <datetime>
+         <hour>0</hour>
+         <minute>0</minute>
+         <second>0</second>
+         <year>2021</year>
+         <month>11</month>
+         <day>9</day>
+        </datetime>
+       </property>
+       <property name="currentSection">
+        <enum>QDateTimeEdit::MonthSection</enum>
+       </property>
+       <property name="date">
+        <date>
+         <year>2021</year>
+         <month>11</month>
+         <day>9</day>
+        </date>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_4">
+       <property name="geometry">
+        <rect>
+         <x>45</x>
+         <y>30</y>
+         <width>71</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Date start :</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_7">
+       <property name="geometry">
+        <rect>
+         <x>50</x>
+         <y>60</y>
+         <width>71</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Date end :</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_8">
+       <property name="geometry">
+        <rect>
+         <x>65</x>
+         <y>520</y>
+         <width>71</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Date start :</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_9">
+       <property name="geometry">
+        <rect>
+         <x>70</x>
+         <y>550</y>
+         <width>71</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Date end :</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_4">
+       <property name="geometry">
+        <rect>
+         <x>300</x>
+         <y>620</y>
+         <width>93</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Tri jour rest</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="Find_2">
+       <property name="geometry">
+        <rect>
+         <x>480</x>
+         <y>620</y>
+         <width>93</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Recherche mail</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="sheet">
+       <property name="geometry">
+        <rect>
+         <x>910</x>
+         <y>590</y>
+         <width>113</width>
+         <height>22</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_15">
+       <property name="geometry">
+        <rect>
+         <x>820</x>
+         <y>590</y>
+         <width>81</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>sheet name:</string>
+       </property>
+      </widget>
      </widget>
     </widget>
     <widget class="QWidget" name="tab_2">
@@ -399,8 +648,18 @@
       <bool>true</bool>
      </property>
      <attribute name="title">
-      <string>List</string>
+      <string>Stat</string>
      </attribute>
+     <widget class="QCustomPlot" name="plot" native="true">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>20</y>
+        <width>1051</width>
+        <height>681</height>
+       </rect>
+      </property>
+     </widget>
     </widget>
    </widget>
   </widget>
@@ -409,7 +668,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1195</width>
+     <width>1194</width>
      <height>26</height>
     </rect>
    </property>
@@ -441,6 +700,14 @@
    </property>
   </action>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QCustomPlot</class>
+   <extends>QWidget</extends>
+   <header>qcustomplot.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

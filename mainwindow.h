@@ -1,7 +1,8 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 #include "collaboration.h"
-
+#include <QDateTime>
+#include <popup.h>
 #include <QMainWindow>
 
 QT_BEGIN_NAMESPACE
@@ -27,8 +28,24 @@ private slots:
 
     void on_tri_name_clicked();
 
+    void on_Find_clicked();
+
+    void on_Find_nom_clicked();
+
+
+    void on_update_clicked();
+
+    void on_tabWidget_currentChanged(int index);
+
+    void on_pushButton_3_clicked();
+
+    void on_pushButton_4_clicked();
+
+    void on_Find_2_clicked();
+
 private:
     Ui::MainWindow *ui;
     Collaboration tabb;
+    Popup *popup;
 };
 #endif // MAINWINDOW_H

@@ -18,19 +18,29 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     collaboration.cpp \
     connection.cpp \
+    exportexcelobject.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    popup.cpp \
+    qcustomplot.cpp
 
 HEADERS += \
     collaboration.h \
     connection.h \
-    mainwindow.h
+    exportexcelobject.h \
+    mainwindow.h \
+    popup.h \
+    qcustomplot.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    popup.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 QT+=sql
+QT       += core gui sql printsupport multimedia
+QT += widgets multimedia
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport
