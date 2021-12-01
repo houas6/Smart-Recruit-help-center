@@ -63,7 +63,7 @@ public:
 
            void on_tri_name_clicked();
 
-           void on_Find_clicked();
+           void on_Find_id_clicked();
 
            void on_Find_nom_clicked();
 
@@ -73,19 +73,20 @@ public:
 
            void on_pushButton_3_clicked();
 
-           void on_pushButton_4_clicked();
+           void on_tri_jour_clicked();
 
-           void on_Find_2_clicked();
+           void on_Find_mail_clicked();
 
            void on_pushButton_ajoutercollaborateur_clicked();
 
-           void on_pushButton_ajouterrdv_clicked();
+           void on_Ajouter_clicked();
 
-           void on_pushButton_triid_clicked();
+           void on_tri_id_2_clicked();
+           void on_tri_id_clicked();
 
            void on_tri_name_2_clicked();
 
-           void on_Find_3_clicked();
+           void on_Find_id_2_clicked();
 
            void on_Find_nom_2_clicked();
 

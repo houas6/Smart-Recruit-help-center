@@ -351,12 +351,12 @@ void MainWindow::on_Supprimer_clicked()
 void MainWindow::on_Modifier_clicked()
 {
     int id=ui->id_supp->text().toInt();
-    QString nom =ui->nom_2->text();
-    QString adresse=ui->adresse_2->text();
-    QString mail=ui->mail_2->text();
-    int num=ui->num_2->text().toInt();
-    QDate date_s =ui->dateStart_2->date();
-    QDate date_e =ui->dateEnd_2->date();
+    QString nom =ui->nom_supp->text();
+    QString adresse=ui->adresse_supp->text();
+    QString mail=ui->mail_supp->text();
+    int num=ui->num_supp->text().toInt();
+    QDate date_s =ui->dateStart_supp->date();
+    QDate date_e =ui->dateEnd_supp->date();
     QDate actual_date=QDate::currentDate();
     int left=actual_date.daysTo(date_e);
        Collaboration c(nom,adresse,mail,num,id,date_s,date_e,left);
@@ -369,10 +369,10 @@ void MainWindow::on_Modifier_clicked()
                                       "click cancel to exit"),
                     QMessageBox:: Cancel);
             ui->id_supp->clear();
-            ui->nom_2->clear();
-            ui->adresse_2->clear();
-            ui->mail_2->clear();
-            ui->num_2->clear();
+            ui->nom_supp->clear();
+            ui->adresse_supp->clear();
+            ui->mail_supp->clear();
+            ui->num_supp->clear();
 
     }
         else
@@ -381,10 +381,10 @@ void MainWindow::on_Modifier_clicked()
                                  QObject::tr("try again.\n"
                                              "click cancel to exit."),QMessageBox::Cancel);
             ui->id_supp->clear();
-            ui->nom_2->clear();
-            ui->adresse_2->clear();
-            ui->mail_2->clear();
-            ui->num_2->clear();
+            ui->nom_supp->clear();
+            ui->adresse_supp->clear();
+            ui->mail_supp->clear();
+            ui->num_supp->clear();
         }
 }
 
@@ -395,7 +395,7 @@ void MainWindow::on_tri_name_clicked()
     ui->tableView->setModel(tabb.trinom());
 }
 
-void MainWindow::on_Find_clicked()
+void MainWindow::on_Find_id_clicked()
 {
     int id=ui->Find_line->text().toInt();
     if (id==NULL) {
@@ -472,12 +472,12 @@ void MainWindow::on_update_clicked()
                                          "click cancel to exit."),QMessageBox::Cancel);
     }
 }
-void MainWindow::on_pushButton_4_clicked()
+void MainWindow::on_tri_jour_clicked()
 {
     ui->tableView->setModel(tabb.trileft());
 }
 
-void MainWindow::on_Find_2_clicked()
+void MainWindow::on_Find_mail_clicked()
 {
     QString mail=ui->Find_line->text();
     if (mail.isEmpty()) {
@@ -559,13 +559,13 @@ void MainWindow::on_pushButton_ajoutercollaborateur_clicked()
     }
 }
 
-void MainWindow::on_pushButton_ajouterrdv_clicked()
+void MainWindow::on_Ajouter_clicked()
 {
-    int id=ui->id->text().toInt();
-    QString nom =ui->nom->text();
-    QString mail=ui->mail->text();
-    int num =ui->num->text().toInt();
-    QDate date_s =ui->dateStart->date();
+    int id=ui->id_rdv->text().toInt();
+    QString nom =ui->nom_rdv->text();
+    QString mail=ui->mail_rdv->text();
+    int num =ui->num_rdv->text().toInt();
+    QDate date_s =ui->dateStart_rdv->date();
     QDate actual_date=QDate::currentDate();
     //
     RDV c(nom,mail,num,id,date_s);
@@ -578,23 +578,23 @@ void MainWindow::on_pushButton_ajouterrdv_clicked()
                      QObject ::tr("Ajout effectué\n"
                                   "click cancel to exit"),
                 QMessageBox:: Cancel);
-        ui->id->clear();
-        ui->nom->clear();
-        ui->mail->clear();
-        ui->num->clear();
+        ui->id_rdv->clear();
+        ui->nom_rdv->clear();
+        ui->mail_rdv->clear();
+        ui->num_rdv->clear();
 } else
     {
         QMessageBox::critical(nullptr,QObject::tr("not ok"),
                              QObject::tr("try again.\n"
                                          "click cancel to exit."),QMessageBox::Cancel);
-        ui->id->clear();
-        ui->nom->clear();
-        ui->mail->clear();
-        ui->num->clear();
+        ui->id_rdv->clear();
+        ui->nom_rdv->clear();
+        ui->mail_rdv->clear();
+        ui->num_rdv->clear();
     }
 }
 
-void MainWindow::on_pushButton_triid_clicked()
+void MainWindow::on_tri_id_2_clicked()
 {
     ui->tableView_5->setModel(tabb1.tri());
 
@@ -606,15 +606,15 @@ void MainWindow::on_tri_name_2_clicked()
 
 }
 
-void MainWindow::on_Find_3_clicked()
+void MainWindow::on_Find_id_2_clicked()
 {
-    int id=ui->Find_line->text().toInt();
+    int id=ui->Find_line_2->text().toInt();
     if (id==NULL) {
         QMessageBox::information(this, tr("Empty Field"),
             tr("Please enter a Number."));
         return;
     } else {
-    ui->tableView->setModel(tabb.recherche(id));
+    ui->tableView->setModel(tabb1.recherche(id));
     }
 }
 
@@ -684,11 +684,11 @@ void MainWindow::on_pb_pdf_clicked()
 
 void MainWindow::on_Modifier_2_clicked()
 {
-    int id=ui->id_supp->text().toInt();
-    QString nom =ui->nom_2->text();
-    QString mail=ui->mail_2->text();
-    int num=ui->num_2->text().toInt();
-    QDate date_s =ui->dateStart_2->date();
+    int id=ui->id_supp_rdv->text().toInt();
+    QString nom =ui->nom_supp_rdv->text();
+    QString mail=ui->mail_supp_rdv->text();
+    int num=ui->num_supp_rdv->text().toInt();
+    QDate date_s =ui->dateStart_supp_rdv->date();
     QDate actual_date=QDate::currentDate();
        RDV c(nom,mail,num,id,date_s);
         bool test=c.modifier(id);
@@ -699,10 +699,10 @@ void MainWindow::on_Modifier_2_clicked()
                          QObject ::tr("modifier effectué\n"
                                       "click cancel to exit"),
                     QMessageBox:: Cancel);
-            ui->id_supp->clear();
-            ui->nom_2->clear();
-            ui->mail_2->clear();
-            ui->num_2->clear();
+            ui->id_supp_rdv->clear();
+            ui->nom_supp_rdv->clear();
+            ui->mail_supp_rdv->clear();
+            ui->num_supp_rdv->clear();
 
     }
         else
@@ -710,16 +710,16 @@ void MainWindow::on_Modifier_2_clicked()
             QMessageBox::critical(nullptr,QObject::tr("not ok"),
                                  QObject::tr("try again.\n"
                                              "click cancel to exit."),QMessageBox::Cancel);
-            ui->id_supp->clear();
-            ui->nom_2->clear();
-            ui->mail_2->clear();
-            ui->num_2->clear();
+            ui->id_supp_rdv->clear();
+            ui->nom_supp_rdv->clear();
+            ui->mail_supp_rdv->clear();
+            ui->num_supp_rdv->clear();
         }
 }
 
 void MainWindow::on_Supprimer_2_clicked()
 {
-    int id =ui->id_supp->text().toInt();
+    int id =ui->id_supp_rdv->text().toInt();
      bool test=tabb1.supprimer(id);
      if (test)
      {
@@ -728,7 +728,7 @@ void MainWindow::on_Supprimer_2_clicked()
                       QObject ::tr("suppression effectué\n"
                                    "click cancel to exit"),
                  QMessageBox:: Cancel);
-        ui->id_supp->clear();
+        ui->id_supp_rdv->clear();
 
     }
      else
@@ -736,11 +736,11 @@ void MainWindow::on_Supprimer_2_clicked()
          QMessageBox::critical(nullptr,QObject::tr("not ok"),
                               QObject::tr("try again.\n"
                                           "click cancel to exit."),QMessageBox::Cancel);
-         ui->id_supp->clear();
+         ui->id_supp_rdv->clear();
      }
 }
 
-void MainWindow::on_pushButton_3_clicked()
+void MainWindow::on_tri_id_clicked()
 {
     ui->tableView->setModel(tabb.tri());
 

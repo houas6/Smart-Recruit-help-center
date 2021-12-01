@@ -861,7 +861,7 @@ background:#6a1616;
         <bool>false</bool>
        </property>
       </widget>
-      <widget class="QPushButton" name="pushButton_ajoutercollaborateur">
+      <widget class="QPushButton" name="Ajouter">
        <property name="geometry">
         <rect>
          <x>110</x>
@@ -1039,7 +1039,7 @@ background:#6a1616;
         <string>Id :</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="adresse_2">
+      <widget class="QLineEdit" name="adresse_supp">
        <property name="geometry">
         <rect>
          <x>150</x>
@@ -1049,7 +1049,7 @@ background:#6a1616;
         </rect>
        </property>
       </widget>
-      <widget class="QLineEdit" name="num_2">
+      <widget class="QLineEdit" name="num_supp">
        <property name="geometry">
         <rect>
          <x>150</x>
@@ -1059,7 +1059,7 @@ background:#6a1616;
         </rect>
        </property>
       </widget>
-      <widget class="QLineEdit" name="nom_2">
+      <widget class="QLineEdit" name="nom_supp">
        <property name="geometry">
         <rect>
          <x>150</x>
@@ -1130,7 +1130,7 @@ background:#6a1616;
         <bool>false</bool>
        </property>
       </widget>
-      <widget class="QLineEdit" name="mail_2">
+      <widget class="QLineEdit" name="mail_supp">
        <property name="geometry">
         <rect>
          <x>150</x>
@@ -1140,7 +1140,7 @@ background:#6a1616;
         </rect>
        </property>
       </widget>
-      <widget class="QPushButton" name="pushButton_3">
+      <widget class="QPushButton" name="tri_id">
        <property name="geometry">
         <rect>
          <x>390</x>
@@ -1166,7 +1166,7 @@ background:#6a1616;
         <string>Tri Nom</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="Find">
+      <widget class="QPushButton" name="Find_id">
        <property name="geometry">
         <rect>
          <x>500</x>
@@ -1271,7 +1271,7 @@ background:#6a1616;
         <string>export</string>
        </property>
       </widget>
-      <widget class="QDateEdit" name="dateEnd_2">
+      <widget class="QDateEdit" name="dateEnd_supp">
        <property name="geometry">
         <rect>
          <x>150</x>
@@ -1284,7 +1284,7 @@ background:#6a1616;
         <bool>false</bool>
        </property>
       </widget>
-      <widget class="QDateEdit" name="dateStart_2">
+      <widget class="QDateEdit" name="dateStart_supp">
        <property name="geometry">
         <rect>
          <x>150</x>
@@ -1366,7 +1366,7 @@ background:#6a1616;
         <string>Date end :</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="pushButton_5">
+      <widget class="QPushButton" name="tri_jour">
        <property name="geometry">
         <rect>
          <x>390</x>
@@ -1379,7 +1379,7 @@ background:#6a1616;
         <string>Tri jour rest</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="Find_2">
+      <widget class="QPushButton" name="Find_mail">
        <property name="geometry">
         <rect>
          <x>500</x>
@@ -1446,7 +1446,7 @@ background:#6a1616;
         <string>Nom de RDV :</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="nom_3">
+      <widget class="QLineEdit" name="nom_rdv">
        <property name="geometry">
         <rect>
          <x>140</x>
@@ -1485,7 +1485,7 @@ background:#6a1616;
         <string>Num :</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="id_2">
+      <widget class="QLineEdit" name="id_rdv">
        <property name="geometry">
         <rect>
          <x>140</x>
@@ -1508,7 +1508,7 @@ background:#6a1616;
         <string>Id :</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="num_3">
+      <widget class="QLineEdit" name="num_rdv">
        <property name="geometry">
         <rect>
          <x>140</x>
@@ -1531,7 +1531,7 @@ background:#6a1616;
         <string>Mail :</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="mail_3">
+      <widget class="QLineEdit" name="mail_rdv">
        <property name="geometry">
         <rect>
          <x>140</x>
@@ -1601,7 +1601,7 @@ background:#6a1616;
         <string>Supprimer</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="id_supp_2">
+      <widget class="QLineEdit" name="id_supp_rdv">
        <property name="geometry">
         <rect>
          <x>150</x>
@@ -1627,7 +1627,7 @@ background:#6a1616;
         <string>Id :</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="num_4">
+      <widget class="QLineEdit" name="num_supp_rdv">
        <property name="geometry">
         <rect>
          <x>150</x>
@@ -1637,7 +1637,7 @@ background:#6a1616;
         </rect>
        </property>
       </widget>
-      <widget class="QLineEdit" name="nom_4">
+      <widget class="QLineEdit" name="nom_supp_rdv">
        <property name="geometry">
         <rect>
          <x>150</x>
@@ -1689,7 +1689,7 @@ background:#6a1616;
         <string>Mail :</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="mail_4">
+      <widget class="QLineEdit" name="mail_supp_rdv">
        <property name="geometry">
         <rect>
          <x>150</x>
@@ -1699,7 +1699,7 @@ background:#6a1616;
         </rect>
        </property>
       </widget>
-      <widget class="QPushButton" name="pushButton_triid">
+      <widget class="QPushButton" name="tri_id_2">
        <property name="geometry">
         <rect>
          <x>310</x>
@@ -1725,7 +1725,7 @@ background:#6a1616;
         <string>Tri Nom</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="Find_3">
+      <widget class="QPushButton" name="Find_id_2">
        <property name="geometry">
         <rect>
          <x>510</x>
@@ -1761,7 +1761,7 @@ background:#6a1616;
         <string>Recherche nom</string>
        </property>
       </widget>
-      <widget class="QDateEdit" name="dateStart_3">
+      <widget class="QDateEdit" name="dateStart_rdv">
        <property name="geometry">
         <rect>
          <x>130</x>
@@ -1791,7 +1791,7 @@ background:#6a1616;
         </date>
        </property>
       </widget>
-      <widget class="QDateEdit" name="dateStart_4">
+      <widget class="QDateEdit" name="dateStart_supp_rdv">
        <property name="geometry">
         <rect>
          <x>150</x>
@@ -1844,7 +1844,7 @@ background:#6a1616;
      <x>0</x>
      <y>0</y>
      <width>982</width>
-     <height>22</height>
+     <height>26</height>
     </rect>
    </property>
   </widget>
