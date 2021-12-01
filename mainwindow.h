@@ -6,6 +6,7 @@
 #include <QTcpServer>
 #include<QTcpSocket>
 #include"chat.h"
+#include "arduino.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -44,5 +45,7 @@ private:
     Ui::MainWindow *ui;
     Employes Etmp;
 
+    QByteArray data;
+    Arduino A;
 };
 #endif // MAINWINDOW_H

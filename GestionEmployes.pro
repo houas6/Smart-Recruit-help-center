@@ -19,6 +19,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     QrCode.cpp \
+    arduino.cpp \
     chat.cpp \
     connection.cpp \
     employe.cpp \
@@ -28,6 +29,7 @@ SOURCES += \
 
 HEADERS += \
     QrCode.hpp \
+    arduino.h \
     chat.h \
     connection.h \
     employe.h \
