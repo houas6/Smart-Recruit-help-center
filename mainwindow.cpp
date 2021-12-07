@@ -18,6 +18,43 @@ ui->tableView_2->setModel(Etmp.afficher());
 ui->lineEdit_cin->setValidator( new QIntValidator(0, 99999999, this) );
 ui->lineEdit_age->setValidator( new QIntValidator(0, 99, this) );
 ui->lineEdit_tel->setValidator( new QIntValidator(0, 99999999, this) );
+ui->dateStart->setDate(QDate::currentDate());
+    ui->dateEnd->setDate(QDate::currentDate());
+    ui->tableView->setModel(tabb.afficher());
+
+    ui->id->setValidator(new QIntValidator(0,99,this));
+        ui->id_supp->setValidator(new QIntValidator(0,99,this));
+    ui->num->setValidator(new QIntValidator(00000000,99999999,this));
+
+    //ui->Find_line->setValidator(new QIntValidator(0,99,this));
+    QRegularExpression rx("\\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}\\b",
+                              QRegularExpression::CaseInsensitiveOption);
+    ui->mail->setValidator(new QRegularExpressionValidator(rx, this));
+
+
+    popup = new Popup;
+
+
+
+    setGeometry(QStyle::alignedRect(
+                    Qt::RightToLeft,
+                    Qt::AlignCenter,
+                    size(),
+                    qApp->desktop()->availableGeometry()));
+
+    setWindowTitle("Window");
+    ui->tab_entreprise ->setModel(Et.afficher());
+      ui->leIdEn ->setValidator(new QIntValidator(0, 9999999, this));
+      ui->lenumero ->setValidator(new QIntValidator(0, 99999999, this));
+      ui->dateStart->setDate(QDate::currentDate());
+          ui->tableView->setModel(tabb.afficher());
+
+          ui->id->setValidator(new QIntValidator(0,99,this));
+              ui->id_supp->setValidator(new QIntValidator(0,99,this));
+          ui->num->setValidator(new QIntValidator(00000000,99999999,this));
+
+
+
 
 
 }
