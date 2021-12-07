@@ -23,6 +23,9 @@
       <height>521</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
     <property name="currentIndex">
      <number>0</number>
     </property>
@@ -55,6 +58,13 @@
         <width>75</width>
         <height>23</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton:hover {
+color:#fff;
+border:15px;
+background:#1E90FF;
+}</string>
       </property>
       <property name="text">
        <string>Connecter</string>
@@ -175,7 +185,7 @@
         <string notr="true">QPushButton:hover {
 color:#fff;
 border:15px;
-background:#6a1616;
+background:#1E90FF;
 }</string>
        </property>
        <property name="text">
@@ -195,7 +205,7 @@ background:#6a1616;
         <string notr="true">QPushButton:hover {
 color:#fff;
 border:15px;
-background:#6a1616;
+background:#1E90FF;
 }</string>
        </property>
        <property name="text">
@@ -385,7 +395,7 @@ background:#6a1616;
         <string notr="true">QPushButton:hover {
 color:#fff;
 border:15px;
-background:#6a1616;
+background:#1E90FF;
 }</string>
        </property>
        <property name="text">
@@ -437,7 +447,7 @@ background:#6a1616;
         <string notr="true">QPushButton:hover {
 color:#fff;
 border:15px;
-background:#6a1616;
+background:#1E90FF;
 }</string>
        </property>
        <property name="text">
@@ -457,7 +467,7 @@ background:#6a1616;
         <string notr="true">QPushButton:hover {
 color:#fff;
 border:15px;
-background:#6a1616;
+background:#1E90FF;
 }</string>
        </property>
        <property name="text">
@@ -522,7 +532,7 @@ background:#6a1616;
         <string notr="true">QPushButton:hover {
 color:#fff;
 border:15px;
-background:#6a1616;
+background:#1E90FF;
 }</string>
        </property>
        <property name="text">
@@ -555,7 +565,7 @@ background:#6a1616;
         <string notr="true">QPushButton:hover {
 color:#fff;
 border:15px;
-background:#6a1616;
+background:#1E90FF;
 }</string>
        </property>
        <property name="text">
@@ -691,6 +701,13 @@ background:#6a1616;
          <height>28</height>
         </rect>
        </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton:hover {
+color:#fff;
+border:15px;
+background:#1E90FF;
+}</string>
+       </property>
        <property name="text">
         <string>ajouter</string>
        </property>
@@ -727,6 +744,13 @@ background:#6a1616;
          <height>28</height>
         </rect>
        </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton:hover {
+color:#fff;
+border:15px;
+background:#1E90FF;
+}</string>
+       </property>
        <property name="text">
         <string>modifier</string>
        </property>
@@ -762,6 +786,13 @@ background:#6a1616;
          <width>93</width>
          <height>28</height>
         </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton:hover {
+color:#fff;
+border:15px;
+background:#1E90FF;
+}</string>
        </property>
        <property name="text">
         <string>Supprimer</string>
@@ -845,6 +876,13 @@ background:#6a1616;
          <width>141</width>
          <height>28</height>
         </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton:hover {
+color:#fff;
+border:15px;
+background:#1E90FF;
+}</string>
        </property>
        <property name="text">
         <string>Ajouter le collaborateur</string>
@@ -972,6 +1010,13 @@ background:#6a1616;
          <height>28</height>
         </rect>
        </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton:hover {
+color:#fff;
+border:15px;
+background:#1E90FF;
+}</string>
+       </property>
        <property name="text">
         <string>Mettre a jour</string>
        </property>
@@ -984,6 +1029,13 @@ background:#6a1616;
          <width>93</width>
          <height>28</height>
         </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton:hover {
+color:#fff;
+border:15px;
+background:#1E90FF;
+}</string>
        </property>
        <property name="text">
         <string>Supprimer</string>
@@ -1125,6 +1177,13 @@ background:#6a1616;
          <height>28</height>
         </rect>
        </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton:hover {
+color:#fff;
+border:15px;
+background:#1E90FF;
+}</string>
+       </property>
        <property name="text">
         <string>Tri ID</string>
        </property>
@@ -1138,6 +1197,13 @@ background:#6a1616;
          <height>28</height>
         </rect>
        </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton:hover {
+color:#fff;
+border:15px;
+background:#1E90FF;
+}</string>
+       </property>
        <property name="text">
         <string>Tri Nom</string>
        </property>
@@ -1150,6 +1216,13 @@ background:#6a1616;
          <width>93</width>
          <height>28</height>
         </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton:hover {
+color:#fff;
+border:15px;
+background:#1E90FF;
+}</string>
        </property>
        <property name="text">
         <string>Recherche id</string>
@@ -1173,6 +1246,13 @@ background:#6a1616;
          <width>93</width>
          <height>28</height>
         </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton:hover {
+color:#fff;
+border:15px;
+background:#1E90FF;
+}</string>
        </property>
        <property name="text">
         <string>Recherche nom</string>
@@ -1229,6 +1309,13 @@ background:#6a1616;
          <width>93</width>
          <height>28</height>
         </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton:hover {
+color:#fff;
+border:15px;
+background:#1E90FF;
+}</string>
        </property>
        <property name="text">
         <string>Update</string>
@@ -1351,6 +1438,13 @@ background:#6a1616;
          <height>28</height>
         </rect>
        </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton:hover {
+color:#fff;
+border:15px;
+background:#1E90FF;
+}</string>
+       </property>
        <property name="text">
         <string>Tri jour rest</string>
        </property>
@@ -1363,6 +1457,13 @@ background:#6a1616;
          <width>93</width>
          <height>28</height>
         </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton:hover {
+color:#fff;
+border:15px;
+background:#1E90FF;
+}</string>
        </property>
        <property name="text">
         <string>Recherche mail</string>
@@ -1440,6 +1541,13 @@ background:#6a1616;
          <width>141</width>
          <height>28</height>
         </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton:hover {
+color:#fff;
+border:15px;
+background:#1E90FF;
+}</string>
        </property>
        <property name="text">
         <string>Ajouter le RDV</string>
@@ -1557,6 +1665,13 @@ background:#6a1616;
          <height>28</height>
         </rect>
        </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton:hover {
+color:#fff;
+border:15px;
+background:#1E90FF;
+}</string>
+       </property>
        <property name="text">
         <string>Mettre a jour</string>
        </property>
@@ -1569,6 +1684,13 @@ background:#6a1616;
          <width>93</width>
          <height>28</height>
         </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton:hover {
+color:#fff;
+border:15px;
+background:#1E90FF;
+}</string>
        </property>
        <property name="text">
         <string>Supprimer</string>
@@ -1681,6 +1803,13 @@ background:#6a1616;
          <height>28</height>
         </rect>
        </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton:hover {
+color:#fff;
+border:15px;
+background:#1E90FF;
+}</string>
+       </property>
        <property name="text">
         <string>Tri ID</string>
        </property>
@@ -1694,6 +1823,13 @@ background:#6a1616;
          <height>28</height>
         </rect>
        </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton:hover {
+color:#fff;
+border:15px;
+background:#1E90FF;
+}</string>
+       </property>
        <property name="text">
         <string>Tri Nom</string>
        </property>
@@ -1706,6 +1842,13 @@ background:#6a1616;
          <width>93</width>
          <height>28</height>
         </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton:hover {
+color:#fff;
+border:15px;
+background:#1E90FF;
+}</string>
        </property>
        <property name="text">
         <string>Recherche</string>
@@ -1729,6 +1872,13 @@ background:#6a1616;
          <width>93</width>
          <height>28</height>
         </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton:hover {
+color:#fff;
+border:15px;
+background:#1E90FF;
+}</string>
        </property>
        <property name="text">
         <string>Recherche nom</string>
@@ -1802,6 +1952,13 @@ background:#6a1616;
          <width>93</width>
          <height>28</height>
         </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton:hover {
+color:#fff;
+border:15px;
+background:#1E90FF;
+}</string>
        </property>
        <property name="text">
         <string>exporter pdf</string>
