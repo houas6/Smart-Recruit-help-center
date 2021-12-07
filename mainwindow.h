@@ -17,6 +17,9 @@
 #include "popup.h"
 #include "QrCode.hpp"
 #include"exportexcelobject.h"
+#include <QPrinter>
+#include <QFileDialog>
+#include <QTextDocument>
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -71,7 +74,6 @@ public:
            void on_update_clicked();
 
 
-           void on_pushButton_3_clicked();
 
            void on_tri_jour_clicked();
 
@@ -95,6 +97,8 @@ public:
            void on_Modifier_2_clicked();
 
            void on_Supprimer_2_clicked();
+
+           void on_connecter_clicked();
 
 private:
     Ui::MainWindow *ui;

@@ -745,3 +745,39 @@ void MainWindow::on_tri_id_clicked()
     ui->tableView->setModel(tabb.tri());
 
 }
+
+void MainWindow::on_connecter_clicked()
+{
+    QStackedWidget stackedWidget;
+            connect(ui->stackedWidget, SIGNAL(clicked()), this, SLOT(viewData));
+            QString username=ui->lineEdit_username->text();
+                    QString password = ui->lineEdit_password->text();
+                    if(username == "aziz" && password == "aziz")
+                    { QMessageBox::information(this, "Login", "Username and password is correct");
+                   //connect(ui->MainWindow->page_3, SIGNAL(on_connecter_clicked()), this, SLOT(viewData));
+                    ui->stackedWidget->setCurrentIndex(1);
+                    }
+                        //hide(); mainwindow = new MainWindow(this); mainwindow->show(); }
+                        else if(username == "soulaima" && password == "soulaima")
+                    { QMessageBox::information(this, "Login", "Username and password is correct");
+                       ui->stackedWidget->setCurrentIndex(2);
+                    }
+                            //hide(); mainwindow = new MainWindow(this); mainwindow->show(); }
+                            else if(username == "oussema" && password == "oussema")
+                            { QMessageBox::information(this, "Login", "Username and password is correct");
+                       ui->stackedWidget->setCurrentIndex(3);
+                    }
+                                //hide(); mainwindow = new MainWindow(this); mainwindow->show(); }
+                                else if(username == "yassine" && password == "yassine")
+                                { QMessageBox::information(this, "Login", "Username and password is correct");
+                       ui->stackedWidget->setCurrentIndex(4);
+                    }
+                                    //hide(); mainwindow = new MainWindow(this); mainwindow->show(); }
+                                    else if(username == "roua" && password == "roua")
+                                    { QMessageBox::information(this, "Login", "Username and password is correct");
+                       ui->stackedWidget->setCurrentIndex(5);
+                    }
+
+                                        //hide(); mainwindow = new MainWindow(this); mainwindow->show(); }
+                                                else { QMessageBox::warning(this,"Login", "Username and password is not correct"); }
+}
