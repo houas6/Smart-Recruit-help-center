@@ -7,6 +7,8 @@
 #include <QtSql/QSqlQueryModel>
 #include "chat.h"
 
+candidat _c;
+QString cCaptcha;
 using namespace qrcodegen;
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -54,7 +56,17 @@ ui->dateStart->setDate(QDate::currentDate());
           ui->num->setValidator(new QIntValidator(00000000,99999999,this));
 
 
+//ROUA
+          ui->tableView_4->setModel(ctmp.Afficher());
 
+          Captcha cp;
+          cp.randomize();
+          cp.setDifficulty(0);
+          /*cp.loadDictionary("dictionary.txt");
+          cp.setTextGeneration(Captcha::TextGeneration_Dictionary);*/
+          cp.generateText();
+          cCaptcha = cp.captchaText();
+          ui->captcha_label->setPixmap(QPixmap::fromImage(cp.captchaImage()));
 
 
 }
@@ -100,7 +112,7 @@ ui->tableView_2->setModel(E.afficher());
 void MainWindow::on_pushButton_supprimer_clicked()
 {
     //recuperation du cin
-    int cin=ui->lineEdit_cin->text().toInt();Employes E1;
+    int cin=ui->lineEdit_cin_2->text().toInt();Employes E1;
     bool test=E1.supprimer(cin);
 
     if (test)
@@ -332,7 +344,7 @@ void MainWindow::on_pbajouter_clicked()
 
 void MainWindow::on_pb_supprimer_clicked()
 {
-Entreprise E; E.setIdEn(ui->leidensupp_2->text().toInt());
+Entreprise E; E.setIdEn(ui->leidensupp->text().toInt());
 bool test=E.supprimer(E.getIdEn());
 MainWindow w;
 
@@ -817,4 +829,114 @@ void MainWindow::on_connecter_clicked()
 
                                         //hide(); mainwindow = new MainWindow(this); mainwindow->show(); }
                                                 else { QMessageBox::warning(this,"Login", "Username and password is not correct"); }
+}
+//candidats
+void MainWindow::on_butAjouter_clicked()
+{
+    int id=ui->lineid->text().toInt();
+       int cin=ui->linecin->text().toInt();
+        QString nom=ui->linenom->text();
+        QString prenom =ui->lineprenom->text();
+        QString mail=ui->linemail->text();
+        int num =ui->linenum->text().toInt();
+        QString sexe =ui->linesexe->text();
+
+
+
+    candidat C(id,cin,nom,prenom,mail,num,sexe);
+
+        bool test=C.Ajouter();
+        if(test)
+        {
+            ui->tableView_4->setModel(ctmp.Afficher());
+
+            QMessageBox::information(nullptr, QObject::tr("Succes"),
+                        QObject::tr("Ajout successful.\n"
+                                    "Click Cancel to exit."), QMessageBox::Cancel);
+            ui->tableView_4->setModel(ctmp.Afficher());
+
+    }
+        else
+           { QMessageBox::critical(nullptr, QObject::tr("Erreur"),
+                        QObject::tr("Ajout failed.\n"
+                                    "Click Cancel to exit."), QMessageBox::Cancel); }
+}
+
+void MainWindow::on_butSupprimer_clicked()
+{
+    QString id_del=ui->tableView_4->model()->data(ui->tableView->model()->index(ui->tableView_4->currentIndex().row(),0)).toString();
+
+    bool supp = ctmp.Supprimer(id_del);
+
+    if(supp)
+        {
+        ui->tableView_4->setModel(ctmp.Afficher());
+        QMessageBox::information(nullptr, QObject::tr("database is open"),
+                        QObject::tr("Suppression avec succés.\n"
+                                    "Click Cancel to exit."), QMessageBox::Ok);
+
+    }
+        else
+           { QMessageBox::critical(nullptr, QObject::tr("database is not open"),
+                        QObject::tr("Suppression échoué.\n"
+                                    "Click Cancel to exit."), QMessageBox::Ok);
+    }
+
+}
+
+void MainWindow::on_butModifier_clicked()
+{
+    int id_mod=ui->tableView->model()->data(ui->tableView->model()->index(ui->tableView->currentIndex().row(),0)).toInt();
+    int cin=ui->linecin->text().toInt();
+     QString nom=ui->linenom->text();
+     QString prenom =ui->lineprenom->text();
+     QString mail=ui->linemail->text();
+     int num =ui->linenum->text().toInt();
+     QString sexe=ui->linesexe->text();
+
+    candidat C(id_mod,cin,nom,prenom,mail,num,sexe);
+    QString id_prov = (QString) id_mod;
+    bool test = C.Modifier(id_prov);
+
+    if(test)
+        {
+        ui->tableView_4->setModel(ctmp.Afficher());
+        QMessageBox::information(nullptr, QObject::tr("database is open"),
+                        QObject::tr("Modification avec succés.\n"
+                                    "Click Cancel to exit."), QMessageBox::Ok);
+
+    }
+        else
+           { QMessageBox::critical(nullptr, QObject::tr("database is not open"),
+                        QObject::tr("Modification échoué.\n"
+                                    "Click Cancel to exit."), QMessageBox::Ok);
+    }
+
+}
+
+void MainWindow::on_Search_clicked()
+{
+    if((ui->comboBox->currentText() == "")||(ui->lineRechercher->text() == "")){
+        QMessageBox::critical(nullptr, QObject::tr("database is not open"),
+                                QObject::tr("Veuillez selectez une paramètre.\n"), QMessageBox::Ok);
+    }
+    else {
+        ui->tableView_4->setModel(ctmp.Rechercher(ui->lineRechercher->text(), ui->comboBox->currentIndex()));
+    }
+}
+
+void MainWindow::on_butTrier_clicked()
+{
+    ui->tableView_4->setModel(ctmp.Tri(ui->comboBox_2->currentIndex(), ui->comboBox_3->currentIndex()));
+}
+void MainWindow::paintEvent(QPaintEvent *)
+{
+    QPainter painter(this);
+    Captcha cp;
+    cp.randomize();
+    cp.setDifficulty(3);
+    /*cp.loadDictionary("dictionary.txt");
+    cp.setTextGeneration(Captcha::TextGeneration_Dictionary);*/
+    cp.generateText();
+    //painter.drawImage(30, 30, cp.captchaImage());
 }

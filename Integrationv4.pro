@@ -17,6 +17,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     QrCode.cpp \
+    candidat.cpp \
+    captcha.cpp \
     chat.cpp \
     collaboration.cpp \
     connection.cpp \
@@ -31,6 +33,8 @@ SOURCES += \
 
 HEADERS += \
     QrCode.hpp \
+    candidat.h \
+    captcha.h \
     chat.h \
     collaboration.h \
     connection.h \

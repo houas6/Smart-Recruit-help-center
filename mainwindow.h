@@ -20,6 +20,15 @@
 #include <QPrinter>
 #include <QFileDialog>
 #include <QTextDocument>
+#include "candidat.h"
+#include <QDialog>
+#include "captcha.h"
+#include <QPaintEvent>
+#include <QtCore/QTime>
+#include <QtCharts/QChartView>
+#include <QtCharts/QLegend>
+#include <QtCharts/QPieSeries>
+#include <QGridLayout>
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -99,6 +108,18 @@ public:
            void on_Supprimer_2_clicked();
 
            void on_connecter_clicked();
+           //candidat
+           void on_butAjouter_clicked();
+
+           void on_butSupprimer_clicked();
+
+           void on_butModifier_clicked();
+
+virtual void paintEvent(QPaintEvent *);
+
+           void on_Search_clicked();
+
+           void on_butTrier_clicked();
 
 private:
     Ui::MainWindow *ui;
@@ -109,6 +130,7 @@ private:
         Collaboration tabb;
             Popup *popup;
             RDV tabb1;
+            candidat ctmp;
 
 };
 #endif // MAINWINDOW_H
