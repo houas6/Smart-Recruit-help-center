@@ -22,7 +22,7 @@ ui->lineEdit_tel->setValidator( new QIntValidator(0, 99999999, this) );
 // read_from_arduino();
 
 
-   int ret=A.connect_arduino(); // lancer la connexion à arduino
+  int ret=A.connect_arduino(); // lancer la connexion à arduino
        switch(ret){
        case(0):qDebug()<< "arduino is available and connected to : "<< A.getarduino_port_name();
            break;
@@ -38,7 +38,17 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
+void MainWindow::update_label()
+{
+    data=A.read_from_arduino();
 
+
+    if (data=="1")
+        ui->labela->setText("Carte Détectée");
+    else if (data=="0")
+        ui->labela->setText("Access denied");
+
+}
 
 void MainWindow::on_pushButton_ajouter_clicked()
 {

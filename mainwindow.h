@@ -7,6 +7,8 @@
 #include<QTcpSocket>
 #include"chat.h"
 #include "arduino.h"
+#include<QtSerialPort/QSerialPort>
+#include <QtSerialPort/QSerialPortInfo>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -34,7 +36,7 @@ private slots:
     void on_pushButton_Recherche_clicked();
 
 
-
+void update_label();
     void on_tabWidget_currentChanged(int index);
 
     void on_qrpushbutton_clicked();
