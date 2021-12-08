@@ -17,6 +17,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     QrCode.cpp \
+    arduino.cpp \
     candidat.cpp \
     captcha.cpp \
     chat.cpp \
@@ -33,6 +34,7 @@ SOURCES += \
 
 HEADERS += \
     QrCode.hpp \
+    arduino.h \
     candidat.h \
     captcha.h \
     chat.h \

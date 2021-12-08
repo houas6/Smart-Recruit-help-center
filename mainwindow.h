@@ -29,6 +29,9 @@
 #include <QtCharts/QLegend>
 #include <QtCharts/QPieSeries>
 #include <QGridLayout>
+#include "arduino.h"
+#include<QtSerialPort/QSerialPort>
+#include <QtSerialPort/QSerialPortInfo>
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -120,7 +123,7 @@ virtual void paintEvent(QPaintEvent *);
            void on_Search_clicked();
 
            void on_butTrier_clicked();
-
+void update_label();
 private:
     Ui::MainWindow *ui;
     Employes Etmp;
@@ -131,6 +134,8 @@ private:
             Popup *popup;
             RDV tabb1;
             candidat ctmp;
+            QByteArray data;
+            Arduino A;
 
 };
 #endif // MAINWINDOW_H
