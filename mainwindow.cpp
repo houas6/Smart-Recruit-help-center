@@ -961,3 +961,8 @@ void MainWindow::paintEvent(QPaintEvent *)
     cp.generateText();
     //painter.drawImage(30, 30, cp.captchaImage());
 }
+
+void MainWindow::on_on_clicked()
+{
+    A.write_to_arduino("1");
+}

@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(201, 211, 255);
+</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QStackedWidget" name="stackedWidget">
     <property name="geometry">
@@ -58,8 +62,8 @@
        <rect>
         <x>370</x>
         <y>150</y>
-        <width>75</width>
-        <height>23</height>
+        <width>91</width>
+        <height>41</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -78,12 +82,12 @@ background:#1E90FF;
        <rect>
         <x>60</x>
         <y>120</y>
-        <width>47</width>
-        <height>14</height>
+        <width>51</width>
+        <height>16</height>
        </rect>
       </property>
       <property name="text">
-       <string>Login</string>
+       <string>Username</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_14">
@@ -97,6 +101,70 @@ background:#1E90FF;
       </property>
       <property name="text">
        <string>Mot de passe</string>
+      </property>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_2">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>120</width>
+        <height>101</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(:/new/prefix1/admin.png);</string>
+      </property>
+      <property name="title">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_5">
+      <property name="geometry">
+       <rect>
+        <x>280</x>
+        <y>90</y>
+        <width>61</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(:/new/prefix1/username.png);</string>
+      </property>
+      <property name="title">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_6">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>180</y>
+        <width>51</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(:/new/prefix1/password.png);</string>
+      </property>
+      <property name="title">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_7">
+      <property name="geometry">
+       <rect>
+        <x>530</x>
+        <y>20</y>
+        <width>191</width>
+        <height>361</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(:/new/prefix1/logo khadamni.jpg);</string>
+      </property>
+      <property name="title">
+       <string/>
       </property>
      </widget>
     </widget>
@@ -591,7 +659,7 @@ background:#1E90FF;
       <widget class="QLabel" name="labela">
        <property name="geometry">
         <rect>
-         <x>630</x>
+         <x>650</x>
          <y>120</y>
          <width>141</width>
          <height>20</height>
@@ -599,6 +667,19 @@ background:#1E90FF;
        </property>
        <property name="text">
         <string>TextLabel</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="on">
+       <property name="geometry">
+        <rect>
+         <x>660</x>
+         <y>160</y>
+         <width>75</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>on</string>
        </property>
       </widget>
      </widget>
