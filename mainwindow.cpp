@@ -966,3 +966,29 @@ void MainWindow::on_on_clicked()
 {
     A.write_to_arduino("1");
 }
+
+void MainWindow::on_pushButton_quitter_clicked()
+{
+      ui->stackedWidget->setCurrentIndex(0);
+}
+
+void MainWindow::on_pushButton_quitter_2_clicked()
+{
+      ui->stackedWidget->setCurrentIndex(0);
+}
+
+void MainWindow::on_pushButton_quitter_3_clicked()
+{
+      ui->stackedWidget->setCurrentIndex(0);
+}
+
+void MainWindow::on_pushButton_quitter_4_clicked()
+{
+      ui->stackedWidget->setCurrentIndex(0);
+}
+
+void MainWindow::on_pushButton_quitter_5_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+
+}

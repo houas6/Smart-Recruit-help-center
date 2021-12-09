@@ -126,6 +126,16 @@ virtual void paintEvent(QPaintEvent *);
 void update_label();
 void on_on_clicked();
 
+void on_pushButton_quitter_clicked();
+
+void on_pushButton_quitter_2_clicked();
+
+void on_pushButton_quitter_3_clicked();
+
+void on_pushButton_quitter_4_clicked();
+
+void on_pushButton_quitter_5_clicked();
+
 private:
     Ui::MainWindow *ui;
     Employes Etmp;
