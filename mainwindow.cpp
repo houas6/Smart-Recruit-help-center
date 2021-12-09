@@ -9,6 +9,8 @@
 #include "qcustomplot.h"
 #include "exportexcelobject.h"
 #include "popup.h"
+#include <QtMultimedia/QMediaPlayer>
+    #include <QSound>
 using namespace std;
 #include <iostream>
 MainWindow::MainWindow(QWidget *parent)
@@ -19,16 +21,25 @@ MainWindow::MainWindow(QWidget *parent)
     ui->dateStart->setDate(QDate::currentDate());
     ui->dateEnd->setDate(QDate::currentDate());
     ui->tableView->setModel(tabb.afficher());
-
+    int ret=A.connect_arduino(); // lancer la connexion à arduino
+    switch(ret){
+    case(0):qDebug()<< "arduino is available and connected to : "<< A.getarduino_port_name();
+        break;
+    case(1):qDebug() << "arduino is available but not connected to :" <<A.getarduino_port_name();
+       break;
+    case(-1):qDebug() << "arduino is not available";
+    }
+     QObject::connect(A.getserial(),SIGNAL(readyRead()),this,SLOT(update_label())); // permet de lancer
+     //le slot update_label suite à la reception du signal readyRead (reception des données).
     ui->id->setValidator(new QIntValidator(0,99,this));
         ui->id_supp->setValidator(new QIntValidator(0,99,this));
     ui->num->setValidator(new QIntValidator(00000000,99999999,this));
-    ui->num_2->setValidator(new QIntValidator(00000000,99999999,this));
+    ui->num_supp->setValidator(new QIntValidator(00000000,99999999,this));
     //ui->Find_line->setValidator(new QIntValidator(0,99,this));
     QRegularExpression rx("\\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}\\b",
                               QRegularExpression::CaseInsensitiveOption);
     ui->mail->setValidator(new QRegularExpressionValidator(rx, this));
-    ui->mail_2->setValidator(new QRegularExpressionValidator(rx, this));
+    ui->mail_supp->setValidator(new QRegularExpressionValidator(rx, this));
 
     popup = new Popup;
 
@@ -41,13 +52,78 @@ MainWindow::MainWindow(QWidget *parent)
                     qApp->desktop()->availableGeometry()));
 
     setWindowTitle("Window");
+    // background //
+              QLinearGradient gradient(0, 0, 0, 400);
+              gradient.setColorAt(0, QColor(90, 90, 90));
+              gradient.setColorAt(0.38, QColor(105, 105, 105));
+              gradient.setColorAt(1, QColor(70, 70, 70));
+              ui->plot->setBackground(QBrush(gradient));
+
+              QCPBars *amande = new QCPBars(ui->plot->xAxis, ui->plot->yAxis);
+              amande->setAntialiased(false);
+              amande->setStackingGap(1);
+               //couleurs
+              amande->setName("jour rest");
+              amande->setPen(QPen(QColor(0, 168, 140).lighter(130)));
+              amande->setBrush(QColor(0, 168, 140));
+
+               //axe des abscisses
+              QVector<double> ticks;
+              QVector<QString> labels;
+              tabb.statistique(&ticks,&labels);
+
+              QSharedPointer<QCPAxisTickerText> textTicker(new QCPAxisTickerText);
+              textTicker->addTicks(ticks, labels);
+              ui->plot->xAxis->setTicker(textTicker);
+              ui->plot->xAxis->setTickLabelRotation(60);
+              ui->plot->xAxis->setSubTicks(false);
+              ui->plot->xAxis->setTickLength(0, 4);
+              ui->plot->xAxis->setRange(0, 8);
+              ui->plot->xAxis->setBasePen(QPen(Qt::white));
+              ui->plot->xAxis->setTickPen(QPen(Qt::white));
+              ui->plot->xAxis->grid()->setVisible(true);
+              ui->plot->xAxis->grid()->setPen(QPen(QColor(130, 130, 130), 0, Qt::DotLine));
+              ui->plot->xAxis->setTickLabelColor(Qt::white);
+              ui->plot->xAxis->setLabelColor(Qt::white);
+
+              // axe des ordonnées
+              ui->plot->yAxis->setRange(0,10);
+              ui->plot->yAxis->setPadding(5);
+              ui->plot->yAxis->setLabel("Statistiques");
+              ui->plot->yAxis->setBasePen(QPen(Qt::white));
+              ui->plot->yAxis->setTickPen(QPen(Qt::white));
+              ui->plot->yAxis->setSubTickPen(QPen(Qt::white));
+              ui->plot->yAxis->grid()->setSubGridVisible(true);
+              ui->plot->yAxis->setTickLabelColor(Qt::white);
+              ui->plot->yAxis->setLabelColor(Qt::white);
+              ui->plot->yAxis->grid()->setPen(QPen(QColor(130, 130, 130), 0, Qt::SolidLine));
+              ui->plot->yAxis->grid()->setSubGridPen(QPen(QColor(130, 130, 130), 0, Qt::DotLine));
+
+              // ajout des données  (statistiques de la quantité)//
+
+              QVector<double> PlaceData;
+              QSqlQuery q1("select DAYS_LEFT from COLLABORATEUR");
+              while (q1.next()) {
+                            int  nbr_fautee = q1.value(0).toInt();
+                            PlaceData<< nbr_fautee;
+                              }
+              amande->setData(ticks, PlaceData);
+
+              ui->plot->legend->setVisible(true);
+              ui->plot->axisRect()->insetLayout()->setInsetAlignment(0, Qt::AlignTop|Qt::AlignHCenter);
+              ui->plot->legend->setBrush(QColor(255, 255, 255, 100));
+              ui->plot->legend->setBorderPen(Qt::NoPen);
+              QFont legendFont = font();
+              legendFont.setPointSize(5);
+              ui->plot->legend->setFont(legendFont);
+              ui->plot->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom);
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
 }
-void MainWindow::on_pushButton_clicked()
+void MainWindow::on_Ajouter_clicked()
 {
     int id=ui->id->text().toInt();
     QString nom =ui->nom->text();
@@ -119,12 +195,12 @@ void MainWindow::on_Supprimer_clicked()
 void MainWindow::on_Modifier_clicked()
 {
     int id=ui->id_supp->text().toInt();
-    QString nom =ui->nom_2->text();
-    QString adresse=ui->adresse_2->text();
-    QString mail=ui->mail_2->text();
-    int num=ui->num_2->text().toInt();
-    QDate date_s =ui->dateStart_2->date();
-    QDate date_e =ui->dateEnd_2->date();
+    QString nom =ui->nom_supp->text();
+    QString adresse=ui->adresse_supp->text();
+    QString mail=ui->mail_supp->text();
+    int num=ui->num_supp->text().toInt();
+    QDate date_s =ui->dateStart_supp->date();
+    QDate date_e =ui->dateEnd_supp->date();
     QDate actual_date=QDate::currentDate();
     int left=actual_date.daysTo(date_e);
        Collaboration c(nom,adresse,mail,num,id,date_s,date_e,left);
@@ -137,10 +213,10 @@ void MainWindow::on_Modifier_clicked()
                                       "click cancel to exit"),
                     QMessageBox:: Cancel);
             ui->id_supp->clear();
-            ui->nom_2->clear();
-            ui->adresse_2->clear();
-            ui->mail_2->clear();
-            ui->num_2->clear();
+            ui->nom_supp->clear();
+            ui->adresse_supp->clear();
+            ui->mail_supp->clear();
+            ui->num_supp->clear();
 
     }
         else
@@ -149,14 +225,14 @@ void MainWindow::on_Modifier_clicked()
                                  QObject::tr("try again.\n"
                                              "click cancel to exit."),QMessageBox::Cancel);
             ui->id_supp->clear();
-            ui->nom_2->clear();
-            ui->adresse_2->clear();
-            ui->mail_2->clear();
-            ui->num_2->clear();
+            ui->nom_supp->clear();
+            ui->adresse_supp->clear();
+            ui->mail_supp->clear();
+            ui->num_supp->clear();
         }
 }
 
-void MainWindow::on_pushButton_2_clicked()
+void MainWindow::on_tri_id_clicked()
 {
         ui->tableView->setModel(tabb.tri());
 }
@@ -166,7 +242,7 @@ void MainWindow::on_tri_name_clicked()
     ui->tableView->setModel(tabb.trinom());
 }
 
-void MainWindow::on_Find_clicked()
+void MainWindow::on_Find_id_clicked()
 {
     int id=ui->Find_line->text().toInt();
     if (id==NULL) {
@@ -245,7 +321,7 @@ void MainWindow::on_update_clicked()
 }
 
 
-void MainWindow::on_tabWidget_currentChanged(int index)
+/*void MainWindow::on_tabWidget_currentChanged(int index)
 {
     // background //
               QLinearGradient gradient(0, 0, 0, 400);
@@ -312,13 +388,14 @@ void MainWindow::on_tabWidget_currentChanged(int index)
               legendFont.setPointSize(5);
               ui->plot->legend->setFont(legendFont);
               ui->plot->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom);
-}
-void MainWindow::on_pushButton_3_clicked()
+}*/
+void MainWindow::on_export_2_clicked()
 {
     QString fileName = QFileDialog::getSaveFileName(this, tr("Excel file"), qApp->applicationDirPath (),
                                                        tr("Excel Files (*.xls)"));
             QString sheetName=ui->sheet->text();
     ExportExcelObject obj(fileName, sheetName, ui->tableView);
+    qInfo() << fileName;
     obj.addField(0, tr("IDCO"), "int");
     obj.addField(1, tr("NOMCENTRE"), "char(20)");
     obj.addField(2, tr("ADRESSE"), "char(20)");
@@ -327,6 +404,7 @@ void MainWindow::on_pushButton_3_clicked()
     obj.addField(5, tr("DATE_START"), "date");
     obj.addField(6, tr("DATE_END"), "date");
     obj.addField(7, tr("DAYS_LEFT"), "int");
+    connect(&obj, SIGNAL(exportedRowCount(int)), ui->progressBar, SLOT(setValue(int)));
  obj.export2Excel();
 
 }
@@ -334,12 +412,12 @@ void MainWindow::on_pushButton_3_clicked()
 
 
 
-void MainWindow::on_pushButton_4_clicked()
+void MainWindow::on_tri_jour_clicked()
 {
     ui->tableView->setModel(tabb.trileft());
 }
 
-void MainWindow::on_Find_2_clicked()
+void MainWindow::on_Find_email_clicked()
 {
     QString mail=ui->Find_line->text();
     if (mail.isEmpty()) {
@@ -349,4 +427,62 @@ void MainWindow::on_Find_2_clicked()
     } else {
     ui->tableView->setModel(tabb.recherche_mail(mail));
     }
+}
+// Arduino
+
+/*{
+    data=A.read_from_arduino();
+    QString type=".xls";
+    QString fileName="C:/Users/ousso/Desktop/AutoExport";
+    int numFile=1;
+    QString numstring = QString :: number(numFile);
+
+    if(data=="1"){
+    while(QFile::exists(fileName+type)==true)
+    {
+    fileName+=numstring;
+    numFile++;
+    }
+    fileName+=type;
+                    QString sheetName="test";
+            ExportExcelObject obj(fileName, sheetName, ui->tableView);
+            obj.addField(0, tr("IDCO"), "int");
+            obj.addField(1, tr("NOMCENTRE"), "char(20)");
+            obj.addField(2, tr("ADRESSE"), "char(20)");
+            obj.addField(3, tr("NUM"), "int");
+            obj.addField(4, tr("MAIL"), "char(40)");
+            obj.addField(5, tr("DATE_START"), "date");
+            obj.addField(6, tr("DATE_END"), "date");
+            obj.addField(7, tr("DAYS_LEFT"), "int");
+            connect(&obj, SIGNAL(exportedRowCount(int)), ui->progressBar, SLOT(setValue(int)));
+
+         obj.export2Excel();
+         data=0;
+
+
+}
+
+}*/
+
+void MainWindow::on_pushButton_clicked()
+{
+    {
+        ui->tabWidget->setCurrentWidget(ui->tab_2);
+    }
+
+}
+void MainWindow::update_label()
+{
+    data=A.read_from_arduino();
+    if(data=="1"){
+
+QSound::play("C:/Users/ousso/Desktop/buzzer(1).wav");
+        ui->label_17->setText("yes"); // si les données reçues de arduino via la liaison série sont égales à 1
+
+    // alors afficher ON
+}
+    else if (data=="0")
+
+        ui->label_17->setText("non");   // si les données reçues de arduino via la liaison série sont égales à 0
+     //alors afficher ON
 }

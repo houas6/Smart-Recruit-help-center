@@ -87,7 +87,7 @@
         <bool>false</bool>
        </property>
       </widget>
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QPushButton" name="Ajouter">
        <property name="geometry">
         <rect>
          <x>110</x>
@@ -265,7 +265,7 @@
         <string>Id :</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="adresse_2">
+      <widget class="QLineEdit" name="adresse_supp">
        <property name="geometry">
         <rect>
          <x>150</x>
@@ -275,7 +275,7 @@
         </rect>
        </property>
       </widget>
-      <widget class="QLineEdit" name="num_2">
+      <widget class="QLineEdit" name="num_supp">
        <property name="geometry">
         <rect>
          <x>150</x>
@@ -285,7 +285,7 @@
         </rect>
        </property>
       </widget>
-      <widget class="QLineEdit" name="nom_2">
+      <widget class="QLineEdit" name="nom_supp">
        <property name="geometry">
         <rect>
          <x>150</x>
@@ -356,7 +356,7 @@
         <bool>false</bool>
        </property>
       </widget>
-      <widget class="QLineEdit" name="mail_2">
+      <widget class="QLineEdit" name="mail_supp">
        <property name="geometry">
         <rect>
          <x>150</x>
@@ -366,7 +366,7 @@
         </rect>
        </property>
       </widget>
-      <widget class="QPushButton" name="pushButton_2">
+      <widget class="QPushButton" name="tri_id">
        <property name="geometry">
         <rect>
          <x>300</x>
@@ -392,7 +392,7 @@
         <string>Tri Nom</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="Find">
+      <widget class="QPushButton" name="Find_id">
        <property name="geometry">
         <rect>
          <x>480</x>
@@ -484,7 +484,7 @@
         <string>Update</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="pushButton_3">
+      <widget class="QPushButton" name="export_2">
        <property name="geometry">
         <rect>
          <x>920</x>
@@ -497,7 +497,7 @@
         <string>export</string>
        </property>
       </widget>
-      <widget class="QDateEdit" name="dateEnd_2">
+      <widget class="QDateEdit" name="dateEnd_supp">
        <property name="geometry">
         <rect>
          <x>140</x>
@@ -510,7 +510,7 @@
         <bool>false</bool>
        </property>
       </widget>
-      <widget class="QDateEdit" name="dateStart_2">
+      <widget class="QDateEdit" name="dateStart_supp">
        <property name="geometry">
         <rect>
          <x>140</x>
@@ -592,7 +592,7 @@
         <string>Date end :</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="pushButton_4">
+      <widget class="QPushButton" name="tri_jour">
        <property name="geometry">
         <rect>
          <x>300</x>
@@ -605,7 +605,7 @@
         <string>Tri jour rest</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="Find_2">
+      <widget class="QPushButton" name="Find_email">
        <property name="geometry">
         <rect>
          <x>480</x>
@@ -639,6 +639,58 @@
        </property>
        <property name="text">
         <string>sheet name:</string>
+       </property>
+      </widget>
+      <widget class="QProgressBar" name="progressBar">
+       <property name="geometry">
+        <rect>
+         <x>1020</x>
+         <y>620</y>
+         <width>121</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="value">
+        <number>24</number>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton">
+       <property name="geometry">
+        <rect>
+         <x>700</x>
+         <y>620</y>
+         <width>93</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>goto</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_16">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>630</y>
+         <width>101</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Gaz Detected:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_17">
+       <property name="geometry">
+        <rect>
+         <x>100</x>
+         <y>630</y>
+         <width>56</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
        </property>
       </widget>
      </widget>
